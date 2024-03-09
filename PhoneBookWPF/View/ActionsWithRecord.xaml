@@ -1,0 +1,152 @@
+﻿<UserControl x:Class="PhoneBookWPF.View.ActionsWithRecord"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:PhoneBookWPF.View"
+             xmlns:help="clr-namespace:PhoneBookWPF.HelpMethods"
+             xmlns:viewModel="clr-namespace:PhoneBookWPF.ViewModel"
+             xmlns:model="clr-namespace:PhoneBookWPF.Model"
+             mc:Ignorable="d" 
+             d:DesignHeight="370" 
+             d:DesignWidth="300">
+
+    <UserControl.Resources>
+
+        <model:PhoneBookRecord x:Key="PhoneBookRecord"/>
+        <help:MyMultiValueConverter x:Key="MyMultiValueConverter"/>
+
+
+        <Style x:Key="ErrorRecordTextBlock" TargetType="{x:Type TextBlock}">
+            <Setter Property="Margin" Value="0 0 0 5"/>
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style x:Key="RecordTextBlockHeader" TargetType="{x:Type TextBlock}">
+            <Setter Property="Margin" Value="0 0 0 5"/>
+            <Setter Property="Width" Value="130"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style x:Key="RecordTextBlock" TargetType="{x:Type TextBlock}">
+            <Setter Property="Margin" Value="0 0 0 1"/>
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+        <Style x:Key="RecordTextBox" TargetType="{x:Type TextBox}">
+            <Setter Property="Margin" Value="0 0 0 7"/>
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+        <Style x:Key="RecordButton" TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="5 5 0 0"/>
+            <Setter Property="Padding" Value="5 3 5 3"/>
+            <Setter Property="Width" Value="65"/>
+            <Setter Property="FontSize" Value="12"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid x:Name="gRecord">
+        <Grid.Resources>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+
+                <TextBlock Text="Данные записи"
+                           Grid.ColumnSpan="2"
+                       Style="{StaticResource RecordTextBlockHeader}"></TextBlock>
+                <TextBox x:Name="tbSelectedIndexRecord"
+                         Text=""
+                         Visibility="Collapsed"></TextBox>
+                <TextBox x:Name="tbRecordId"
+                         Text="{Binding Id, Source={StaticResource PhoneBookRecord}}"
+                         Visibility="Collapsed"></TextBox>
+                <TextBlock x:Name="tbErrorLastName"
+                           Grid.Row="1"
+                           Grid.Column="1"
+                           Text=""
+                           Style="{StaticResource ErrorRecordTextBlock}"></TextBlock>
+                <TextBlock Text="Фамилия"
+                           Style="{StaticResource RecordTextBlock}"></TextBlock>
+                <TextBox x:Name="tbLastName"
+                         Text="{Binding LastName, Source={StaticResource PhoneBookRecord}}"
+                         Style="{StaticResource RecordTextBox}"></TextBox>
+                <TextBlock x:Name="tbErrorFirstName"
+                           Grid.Row="1"
+                           Grid.Column="1"
+                           Text=""
+                           Style="{StaticResource ErrorRecordTextBlock}"></TextBlock>
+                <TextBlock Text="Имя"
+                           Grid.Row="2"
+                           Style="{StaticResource RecordTextBlock}"></TextBlock>
+                <TextBox x:Name="tbFirstName"
+                         Text="{Binding FirstName, Source={StaticResource PhoneBookRecord}}"
+                         Style="{StaticResource RecordTextBox}"></TextBox>
+                <TextBlock Text="Отчество"
+                           Style="{StaticResource RecordTextBlock}"></TextBlock>
+                <TextBox x:Name="tbFathersName"
+                         Text="{Binding FathersName, Source={StaticResource PhoneBookRecord}}"
+                         Style="{StaticResource RecordTextBox}"></TextBox>
+                <TextBlock Text="Телефон"
+                           Style="{StaticResource RecordTextBlock}"></TextBlock>
+                <TextBox x:Name="tbPhoneNumber"
+                         Text="{Binding PhoneNumber, Source={StaticResource PhoneBookRecord}}"
+                         Style="{StaticResource RecordTextBox}"></TextBox>
+                <TextBlock Text="Номер паспорта"
+                           Style="{StaticResource RecordTextBlock}"></TextBlock>
+                <TextBox x:Name="tbAddress"
+                         Text="{Binding Address, Source={StaticResource PhoneBookRecord}}"
+                         Style="{StaticResource RecordTextBox}"></TextBox>
+                <TextBlock Text="Описание"
+                           Style="{StaticResource RecordTextBlock}"></TextBlock>
+                <TextBox x:Name="tbDescription"
+                         Text="{Binding Description, Source={StaticResource PhoneBookRecord}}"
+                         Style="{StaticResource RecordTextBox}"></TextBox>
+        <StackPanel Orientation="Horizontal"
+                        Width="140"
+                        DataContext="{Binding}">
+            <Button x:Name="bAdd"
+                        Content="Добавить"
+                        Command="{}"
+                        CommandParameter="{Binding ElementName=spRecord, Mode=OneWay}"
+                        Style="{StaticResource RecordButton}">
+            </Button>
+            <Button Content="Удалить"
+                        Command=""
+                        CommandParameter="{Binding ElementName=spRecord, Mode=OneWay}"
+                        Style="{StaticResource RecordButton}"></Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                        Width="140">
+            <Button Content="Изменить"
+                        Command=""
+                        CommandParameter="{Binding ElementName=spRecord, Mode=OneWay}"
+                        Style="{StaticResource RecordButton}"></Button>
+            <Button Content="Очистить"
+                        Command=""
+                        CommandParameter="{Binding ElementName=spRecord, Mode=OneWay}"
+                        Style="{StaticResource RecordButton}"></Button>
+        </StackPanel>
+    </Grid>
+</UserControl>
