@@ -17,9 +17,17 @@ namespace PhoneBookWPF
     {
         public static PhoneBookWindow PhoneBookWindow = new PhoneBookWindow();
 
+        public static RegistrationWindow RegistrationWindow = new RegistrationWindow();
+
         public static RecordsView RecordsView = new RecordsView();
 
         public static ActionsWithRecordView ActionsWithRecordView = new ActionsWithRecordView();
 
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            App.PhoneBookWindow.Show();
+
+            base.OnStartup(e);
+        }
     }
 }

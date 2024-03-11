@@ -96,7 +96,6 @@ C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\GeneratedInternalTypeHelper.g.c
 C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\PhoneBookWPF_MarkupCompile.cache
 C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\PhoneBookWPF_MarkupCompile.lref
 C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\MainWindow.baml
-C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\ActionsWithRecord.baml
 C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\PhoneBookWindow.baml
 C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\RecordsView.baml
 C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\RegistrationWindow.baml

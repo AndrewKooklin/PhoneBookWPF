@@ -225,8 +225,6 @@ namespace PhoneBookWPF.ViewModel
 
             CheckUserLabelContent = "";
             var bookWindow = App.PhoneBookWindow;
-            bookWindow = new PhoneBookWindow();
-            bookWindow.ccLeftPartPage = new RecordsView();
             bookWindow.ccRightPartPage = null;
             if (userRoles.Contains("Admin"))
             {
@@ -238,14 +236,25 @@ namespace PhoneBookWPF.ViewModel
                 bookWindow.miUserName.Visibility = Visibility.Visible;
                 bookWindow.miUserName.Header = user.UserName;
                 bookWindow.miLogOut.Visibility = Visibility.Visible;
+
+                App.ActionsWithRecordView.bAddRecord.Visibility = Visibility.Visible;
+                App.ActionsWithRecordView.bChangeRecord.Visibility = Visibility.Visible;
+                App.ActionsWithRecordView.bDeleteRecord.Visibility = Visibility.Visible;
+                App.ActionsWithRecordView.bClearForm.Visibility = Visibility.Visible;
             }
             else if (!userRoles.Contains("Admin") && userRoles.Contains("User"))
             {
-
+                bookWindow.miUserName.Visibility = Visibility.Visible;
+                bookWindow.miUserName.Header = user.UserName;
+                bookWindow.miLogOut.Visibility = Visibility.Visible;
+                bookWindow.miAddRecord.Visibility = Visibility.Visible;
+                App.ActionsWithRecordView.bAddRecord.Visibility = Visibility.Visible;
             }
             else
             {
-
+                bookWindow.miUserName.Visibility = Visibility.Visible;
+                bookWindow.miUserName.Header = user.UserName;
+                bookWindow.miLogOut.Visibility = Visibility.Visible;
             }
 
             (Window.GetWindow(App.Current.MainWindow) as MainWindow).Hide();

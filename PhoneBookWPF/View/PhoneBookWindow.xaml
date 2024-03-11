@@ -147,26 +147,39 @@
               Grid.Column="1"
               Height="24"
               Width="auto"
-              MinWidth="200"
-              FlowDirection="LeftToRight"
               VerticalAlignment="Top"
               HorizontalAlignment="Right"
               FontSize="15"
               Background="White">
+
+            <MenuItem x:Name="miLogIn"
+                      Header="Login"
+                      Cursor="Hand"
+                      Margin="0 0 2 0"
+                      Command="" 
+                      CommandParameter="">
+            </MenuItem>
+            <MenuItem x:Name="miRegister"
+                   Header="Register"
+                   Foreground="Black"
+                   Margin="0 0 2 0"
+                   Cursor="Hand"
+                   Command="" 
+                   CommandParameter="">
+            </MenuItem>
 
             <MenuItem x:Name="miUserName"
                    Visibility="Collapsed"
                    Header=""
                    Foreground="Black"
                    IsEnabled="False"
-                   Margin="0,0,3,0"
-                   VerticalAlignment="Top">
+                   Margin="0 0 2 0">
             </MenuItem>
             <MenuItem x:Name="miLogOut"
                       Visibility="Collapsed"
                       Header="Logout"
                       Cursor="Hand"
-                      Margin="0,0,3,0"
+                      Margin="0 0 2 0"
                       Command="" 
                       CommandParameter="">
             </MenuItem>

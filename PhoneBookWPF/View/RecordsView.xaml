@@ -17,7 +17,7 @@
         </Grid.Resources>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="6*"/>
+            <RowDefinition Height="3*"/>
             <RowDefinition Height="6*"/>
             <RowDefinition Height="80*"/>
         </Grid.RowDefinitions>
@@ -29,7 +29,8 @@
                    Content="{Binding ErrorSelection, Source={StaticResource PhoneBookWindowViewModel}}"
                    FontSize="17"
                    Foreground="Yellow"
-                   Margin="20 15 0 10"/>
+                   Margin="2"
+                   HorizontalAlignment="Left"/>
 
         <StackPanel x:Name="spRecordsHeaders"
                     Grid.Row="1"

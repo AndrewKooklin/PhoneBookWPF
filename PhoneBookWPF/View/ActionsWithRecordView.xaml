@@ -181,14 +181,17 @@
                     VerticalAlignment="Center"
                     Margin="52 5 0 0"
                     Width="140">
-            <Button x:Name="bAdd"
+            <Button x:Name="bAddRecord"
                     Content="Добавить"
+                    Visibility="Collapsed"
                     Command="{}"
                     CommandParameter=""
                     Style="{StaticResource RecordButton}"
                     Cursor="Hand">
             </Button>
-            <Button Content="Удалить"
+            <Button x:Name="bDeleteRecord"
+                    Content="Удалить"
+                    Visibility="Collapsed"
                     Command=""
                     CommandParameter="{Binding ElementName=spRecord, Mode=OneWay}"
                     Style="{StaticResource RecordButton}"
@@ -202,13 +205,17 @@
                     Margin="52 0 0 0"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center">
-            <Button Content="Изменить"
+            <Button x:Name="bChangeRecord"
+                    Content="Изменить"
+                    Visibility="Collapsed"
                     Command=""
                     CommandParameter="{Binding ElementName=spRecord, Mode=OneWay}"
                     Style="{StaticResource RecordButton}"
                     Cursor="Hand">
             </Button>
-            <Button Content="Очистить"
+            <Button x:Name="bClearForm"
+                    Content="Очистить"
+                    Visibility="Collapsed"
                     Command=""
                     CommandParameter="{Binding ElementName=spRecord, Mode=OneWay}"
                     Style="{StaticResource RecordButton}"

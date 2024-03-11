@@ -102,7 +102,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Commands\GetRecordCommand.cs" />
+    <Compile Include="Commands\OpenLogInWindowCommand.cs" />
+    <Compile Include="Commands\OpenRegisterWindowCommand.cs" />
     <Compile Include="Commands\ReadRecordsCommand.cs" />
     <Compile Include="Commands\RedirectRegistrationCommand.cs" />
     <Compile Include="Commands\RedirectToLogInCommand.cs" />

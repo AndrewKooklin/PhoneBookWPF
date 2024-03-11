@@ -21,8 +21,9 @@ namespace PhoneBookWPF.ViewModel
             UpdateViewCommand = new UpdateViewCommand(this);
             PhoneBooks = new List<PhoneBookRecord>();
             PhoneBooks = records.GetRecords().GetAwaiter().GetResult();
-            GetRecordCommand = new GetRecordCommand();
             RightCurrentView = new UserControl();
+            OpenRegisterWindowCommand = new OpenRegisterWindowCommand();
+            App.Current.MainWindow = new MainWindow();
         }
 
         PhoneBookRecord bookRecord = new PhoneBookRecord();
@@ -31,9 +32,11 @@ namespace PhoneBookWPF.ViewModel
 
         public ICommand ReadRecordsCommand { get; set; }
 
-        public ICommand GetRecordCommand { get; set; }
-
         public ICommand UpdateViewCommand { get; set; }
+
+        public ICommand OpenRegisterWindowCommand { get; set; }
+
+        public ICommand LogInCommand { get; set; }
 
         private UserControl _leftCurrentView;
 
@@ -92,11 +95,8 @@ namespace PhoneBookWPF.ViewModel
                 }
                 else
                 {
-                    
                     this.RightCurrentView = App.ActionsWithRecordView;
                     var actions = (ActionsWithRecordView)this.RightCurrentView;
-                    //this.RightCurrentView.Content.
-                    //var view = (ActionsWithRecordView)RightCurrentView;
                     actions.tbRecordId.Text = _selectedRecord.Id.ToString();
                     actions.tbLastName.Text = _selectedRecord.LastName;
                     actions.tbFirstName.Text = _selectedRecord.FirstName;
@@ -104,8 +104,6 @@ namespace PhoneBookWPF.ViewModel
                     actions.tbPhoneNumber.Text = _selectedRecord.PhoneNumber;
                     actions.tbAddress.Text = _selectedRecord.Address;
                     actions.tbDescription.Text = _selectedRecord.Description;
-                    
-                    //actions.InitializeComponent();
                 }
 
                 return _selectedRecord;
