@@ -1,4 +1,5 @@
 ﻿using PhoneBookWPF.View;
+using PhoneBookWPF.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,6 +14,13 @@ namespace PhoneBookWPF.Commands
     {
         public event EventHandler CanExecuteChanged;
 
+        private PhoneBookWindowViewModel _phoneBookWindowViewModel;
+
+        public ReadRecordsCommand(PhoneBookWindowViewModel phoneBookWindowViewModel)
+        {
+            _phoneBookWindowViewModel = phoneBookWindowViewModel;
+        }
+
         public bool CanExecute(object parameter)
         {
             return true;
@@ -25,8 +33,7 @@ namespace PhoneBookWPF.Commands
                 return;
             }
 
-            ContentControl control = (ContentControl)parameter;
-            control.Content = new RecordsView();
+            _phoneBookWindowViewModel.LeftCurrentView = new RecordsView();
         }
     }
 }

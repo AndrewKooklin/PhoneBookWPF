@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\repos\PhoneBookWPF\PhoneBookWPF\obj\Debug\
+C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\
 PhoneBookWPF
 none
 false
 DEBUG;TRACE
-C:\repos\PhoneBookWPF\PhoneBookWPF\App.xaml
-5-1567548463
+C:\repos\PhoneBookWPFTemp\PhoneBookWPF\App.xaml
+5196087864
 
-27202367169
-302080705417
-MainWindow.xaml;View\ActionsWithRecord.xaml;View\PhoneBookWindow.xaml;View\RecordsView.xaml;View\RegistrationWindow.xaml;
+261201244944
+30606126374
+MainWindow.xaml;View\ActionsWithRecordView.xaml;View\PhoneBookWindow.xaml;View\RecordsView.xaml;View\RegistrationWindow.xaml;
 
-True
+False
 

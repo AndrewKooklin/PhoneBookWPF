@@ -8,27 +8,31 @@
              xmlns:help="clr-namespace:PhoneBookWPF.HelpMethods"
              mc:Ignorable="d" 
              d:DesignHeight="450" 
-             d:DesignWidth="715">
+             d:DesignWidth="400">
     
     <Grid x:Name="gRecords">
         <Grid.Resources>
-            <viewModel:PhoneBookRecordsViewModel x:Key="PhoneBookRecordsViewModel"/>
+            <viewModel:PhoneBookWindowViewModel x:Key="PhoneBookWindowViewModel"/>
             <help:MyMultiValueConverter x:Key="MyMultiValue"/>
         </Grid.Resources>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="14*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="6*"/>
             <RowDefinition Height="80*"/>
-            <RowDefinition Height="10*"/>
-            <RowDefinition Height="50*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        
+        <Label x:Name="ErrorSelection"
+                   Content="{Binding ErrorSelection, Source={StaticResource PhoneBookWindowViewModel}}"
+                   FontSize="17"
+                   Foreground="Yellow"
+                   Margin="20 15 0 10"/>
 
-        <StackPanel x:Name="spRecordsHeaders" 
+        <StackPanel x:Name="spRecordsHeaders"
+                    Grid.Row="1"
                     Orientation="Horizontal"
                     HorizontalAlignment="Left"
                     Margin="10,5,0,2">
@@ -57,14 +61,14 @@
 
 
         <StackPanel x:Name="spRecordsContent" 
-                        Grid.Row="1" 
+                        Grid.Row="2" 
                         Margin="10 0 0 0" 
                         HorizontalAlignment="Left" 
                         VerticalAlignment="Top"
                         ScrollViewer.VerticalScrollBarVisibility="Auto">
             <ListBox x:Name="lbPhoneBookRecords"
-                         ItemsSource="{Binding PhoneBooks, Source={StaticResource PhoneBookRecordsViewModel}}"
-                         SelectedItem="{Binding SelectedRecord, Source={StaticResource PhoneBookRecordsViewModel}}"
+                         ItemsSource="{Binding PhoneBooks, Source={StaticResource PhoneBookWindowViewModel}}"
+                         SelectedItem="{Binding SelectedRecord, Source={StaticResource PhoneBookWindowViewModel}, UpdateSourceTrigger=PropertyChanged}"
                          Margin="0" 
                          Background="#FFDFFFCE"
                          FontSize="14">
@@ -99,7 +103,7 @@
             </ListBox>
         </StackPanel>
 
-        <StackPanel x:Name="spButtonLabel"
+        <!--<StackPanel x:Name="spButtonLabel"
                     Orientation="Horizontal"
                     Grid.Row="2">
             <Button x:Name="bDetails"
@@ -127,101 +131,6 @@
                    Foreground="Yellow"
                    Margin="20 15 0 10"/>
 
-        </StackPanel>
-
-        <StackPanel x:Name="spDetails"
-                    Grid.Row="3">
-            <Grid x:Name="gDetailsRecord">
-
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="10*"/>
-                    <RowDefinition Height="15*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
-
-                <StackPanel x:Name="spDetailsHeader"
-                    Orientation="Horizontal" 
-                    Margin="10,5,10,2">
-                    <Button x:Name="bDetailsId"
-                    Content="Id" 
-                    Width="30"
-                    Margin="0"/>
-                    <Button x:Name="bDetailsLastName"
-                    Content="Фамилия" 
-                    Width="110"
-                    Margin="0"/>
-                    <Button x:Name="bDetailsFirstName"
-                    Content="Имя" 
-                    Width="110"
-                    Margin="0"/>
-                    <Button x:Name="bDetailsFathersName" 
-                    Content="Отчество" 
-                    Width="110"
-                    Margin="0"/>
-                    <Button x:Name="bDetailsPhoneNumber"
-                    Content="Телефон" 
-                    Width="90"
-                    Margin="0"/>
-                    <Button x:Name="bDetailsAddress"
-                    Content="Адрес" 
-                    Width="120"
-                    Margin="0"/>
-                    <Button x:Name="bDetailsDescription"
-                    Content="Описание" 
-                    Width="120"
-                    Margin="0"/>
-                </StackPanel>
-
-                <StackPanel x:Name="spDetailsContent"
-                    Grid.Row="1"
-                    Orientation="Horizontal"
-                    Margin="10,5,10,2">
-                    <TextBlock x:Name="tbDetailsId" 
-                       Text=""
-                       Width="30"
-                       TextAlignment="Center"
-                       TextWrapping="WrapWithOverflow"/>
-                    <TextBlock x:Name="tbDetailsLastName" 
-                       Text=""
-                       Width="109"
-                       Margin="1 0 0 0"
-                       TextAlignment="Center"
-                       TextWrapping="WrapWithOverflow"/>
-                    <TextBlock x:Name="tbDetailsFirstName" 
-                       Text=""
-                       Width="109"
-                       Margin="1 0 0 0"
-                       TextAlignment="Center"
-                       TextWrapping="WrapWithOverflow"/>
-                    <TextBlock x:Name="tbDetailsFathersName" 
-                       Text=""
-                       Width="109"
-                       Margin="1 0 0 0"
-                       TextAlignment="Center"
-                       TextWrapping="WrapWithOverflow"/>
-                    <TextBlock x:Name="tbDetailsPhoneNumber" 
-                       Text="" 
-                       Width="89"
-                       Margin="1 0 0 0"
-                       TextAlignment="Center"
-                       TextWrapping="WrapWithOverflow"/>
-                    <TextBlock x:Name="tbDetailsAddress" 
-                       Text=""
-                       Width="119"
-                       Margin="1 0 0 0"
-                       TextAlignment="Center"
-                       TextWrapping="WrapWithOverflow"/>
-                    <TextBlock x:Name="tbDetailsDescription" 
-                       Text=""
-                       Width="119"
-                       Margin="1 0 0 0"
-                       TextAlignment="Center"
-                       TextWrapping="WrapWithOverflow"/>
-                </StackPanel>
-
-            </Grid>
-        </StackPanel>
+        </StackPanel>-->
     </Grid>
 </UserControl>

@@ -14,17 +14,28 @@ namespace PhoneBookWPF.ViewModel
 {
     public class PhoneBookWindowViewModel : BaseViewModel
     {
+
         public PhoneBookWindowViewModel()
         {
-            ReadRecordsCommand = new ReadRecordsCommand();
+            ReadRecordsCommand = new ReadRecordsCommand(this);
             UpdateViewCommand = new UpdateViewCommand(this);
+            PhoneBooks = new List<PhoneBookRecord>();
+            PhoneBooks = records.GetRecords().GetAwaiter().GetResult();
+            GetRecordCommand = new GetRecordCommand();
+            RightCurrentView = new UserControl();
         }
+
+        PhoneBookRecord bookRecord = new PhoneBookRecord();
+
+        Records records = new Records();
 
         public ICommand ReadRecordsCommand { get; set; }
 
+        public ICommand GetRecordCommand { get; set; }
+
         public ICommand UpdateViewCommand { get; set; }
 
-        private UserControl _leftCurrentView = null;
+        private UserControl _leftCurrentView;
 
         public UserControl LeftCurrentView
         {
@@ -39,7 +50,7 @@ namespace PhoneBookWPF.ViewModel
             }
         }
 
-        private UserControl _rightCurrentView = null;
+        private UserControl _rightCurrentView;
 
         public UserControl RightCurrentView
         {
@@ -51,6 +62,74 @@ namespace PhoneBookWPF.ViewModel
             {
                 _rightCurrentView = value;
                 OnPropertyChanged(nameof(RightCurrentView));
+            }
+        }
+
+        private List<PhoneBookRecord> _phoneBooks;
+
+        public List<PhoneBookRecord> PhoneBooks
+        {
+            get
+            {
+                return _phoneBooks;
+            }
+            set
+            {
+                _phoneBooks = value;
+                OnPropertyChanged(nameof(PhoneBooks));
+            }
+        }
+
+        private PhoneBookRecord _selectedRecord;
+
+        public PhoneBookRecord SelectedRecord
+        {
+            get
+            {
+                if (_selectedRecord == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    
+                    this.RightCurrentView = App.ActionsWithRecordView;
+                    var actions = (ActionsWithRecordView)this.RightCurrentView;
+                    //this.RightCurrentView.Content.
+                    //var view = (ActionsWithRecordView)RightCurrentView;
+                    actions.tbRecordId.Text = _selectedRecord.Id.ToString();
+                    actions.tbLastName.Text = _selectedRecord.LastName;
+                    actions.tbFirstName.Text = _selectedRecord.FirstName;
+                    actions.tbFathersName.Text = _selectedRecord.FathersName;
+                    actions.tbPhoneNumber.Text = _selectedRecord.PhoneNumber;
+                    actions.tbAddress.Text = _selectedRecord.Address;
+                    actions.tbDescription.Text = _selectedRecord.Description;
+                    
+                    //actions.InitializeComponent();
+                }
+
+                return _selectedRecord;
+            }
+            set
+            {
+                _selectedRecord = new PhoneBookRecord();
+                _selectedRecord = value;
+                OnPropertyChanged(nameof(SelectedRecord));
+            }
+        }
+
+        private string _errorSelection = "";
+
+        public string ErrorSelection
+        {
+            get
+            {
+                return _errorSelection;
+            }
+            set
+            {
+                _errorSelection = value;
+                OnPropertyChanged(nameof(ErrorSelection));
             }
         }
     }

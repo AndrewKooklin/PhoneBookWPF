@@ -34,8 +34,20 @@ namespace PhoneBookWPF.Commands
 
             switch (parameter.ToString())
             {
-                case "":
-                    break;
+                case "Прочитать":
+                    {
+                        _pbWindowViewModel.LeftCurrentView = App.RecordsView;
+                        break;
+                    }
+                case "Добавить":
+                case "Детали":
+                case "Изменить":
+                case "Удалить":
+                    {
+                        _pbWindowViewModel.RightCurrentView = App.ActionsWithRecordView;
+                        break;
+                    }
+                default:break;
             }
         }
     }

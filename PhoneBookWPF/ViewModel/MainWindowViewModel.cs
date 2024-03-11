@@ -224,7 +224,8 @@ namespace PhoneBookWPF.ViewModel
             }
 
             CheckUserLabelContent = "";
-            PhoneBookWindow bookWindow = new PhoneBookWindow();
+            var bookWindow = App.PhoneBookWindow;
+            bookWindow = new PhoneBookWindow();
             bookWindow.ccLeftPartPage = new RecordsView();
             bookWindow.ccRightPartPage = null;
             if (userRoles.Contains("Admin"))
