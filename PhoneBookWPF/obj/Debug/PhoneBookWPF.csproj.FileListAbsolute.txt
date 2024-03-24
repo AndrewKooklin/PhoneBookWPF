@@ -108,3 +108,5 @@ C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\PhoneBookWPF.exe
 C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\PhoneBookWPF.pdb
 C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\ActionsWithRecordView.g.cs
 C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\ActionsWithRecordView.baml
+C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\UsersView.g.cs
+C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\UsersView.baml

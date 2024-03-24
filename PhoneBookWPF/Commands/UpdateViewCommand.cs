@@ -34,17 +34,25 @@ namespace PhoneBookWPF.Commands
 
             switch (parameter.ToString())
             {
-                case "Прочитать":
+                case "Прочитать записи":
                     {
-                        _pbWindowViewModel.LeftCurrentView = App.RecordsView;
+                        _pbWindowViewModel.LeftCurrentView = null;
+                        _pbWindowViewModel.LeftCurrentView = new RecordsView();
                         break;
                     }
-                case "Добавить":
-                case "Детали":
-                case "Изменить":
-                case "Удалить":
+                case "Детали записи":
+                case "Добавить запись":
+                case "Изменить запись":
+                case "Удалить запись":
                     {
                         _pbWindowViewModel.RightCurrentView = App.ActionsWithRecordView;
+                        break;
+                    }
+                case "Список пользователей":
+                    {
+                        _pbWindowViewModel.LeftCurrentView = null;
+                        _pbWindowViewModel.RightCurrentView = null;
+                        //_pbWindowViewModel.LeftCurrentView = 
                         break;
                     }
                 default:break;

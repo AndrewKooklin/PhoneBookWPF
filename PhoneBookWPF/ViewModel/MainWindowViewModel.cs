@@ -105,14 +105,13 @@ namespace PhoneBookWPF.ViewModel
         {
             LogInCommand = new RelayCommand(Execute, CanExecute);
             RedirectRegistrationCommand = new RedirectRegistrationCommand();
-            
         }
 
         public ICommand LogInCommand { get; set; }
 
         public ICommand RedirectRegistrationCommand { get; set; }
 
-        
+
 
         private bool CanExecute(object parameter)
         {
@@ -179,62 +178,79 @@ namespace PhoneBookWPF.ViewModel
 
             LoginModel model = new LoginModel
             {
-                EMail = eMailValue,
+                Email = eMailValue,
                 Password = passwordValue
             };
 
-            urlRequest = $"{url}" + "Login/CheckUserToDB/";
+            //urlRequest = $"{url}" + "Login/CheckUserToDB/" + $"{model}";
 
-            using (var client = MyHttp.GetHttpClient())
-            {
-                using (response = client.PostAsJsonAsync(urlRequest, model).GetAwaiter().GetResult())
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    userExist = JsonConvert.DeserializeObject<bool>(apiResponse);
-                }
-            }
+            //using (var client = MyHttp.GetHttpClient())
+            //{
+            //    using (response = client.PostAsJsonAsync(urlRequest, model).GetAwaiter().GetResult())
+            //    {
+            //        string apiResponse = await response.Content.ReadAsStringAsync();
+            //        userExist = JsonConvert.DeserializeObject<bool>(apiResponse);
+            //    }
+            //}
 
-            if (!userExist)
-            {
-                CheckUserLabelContent = "Пользователь не найден, проверьте" +
-                                        "\nимя и пароль или зарегистрируйтесь !";
-                return;
-            }
+            //if (!userExist)
+            //{
+            //    CheckUserLabelContent = "Пользователь не найден, проверьте" +
+            //                            "\nимя и пароль или зарегистрируйтесь !";
+            //    return;
+            //}
 
-            urlRequest = $"{url}" + "Login/GetUserFromDB/";
+            //urlRequest = $"{url}" + "Login/GetUserFromDB/";
+
+            //using (var client = MyHttp.GetHttpClient())
+            //{
+            //    using (response = await client.PostAsJsonAsync(urlRequest, model))
+            //    {
+            //        string apiResponse = await response.Content.ReadAsStringAsync();
+            //        user = JsonConvert.DeserializeObject<IdentityUser>(apiResponse);
+            //    }
+            //}
+
+            urlRequest = $"{url}" + "Login/GetUserRoles/" + $"{model}";
 
             using (var client = MyHttp.GetHttpClient())
             {
                 using (response = await client.PostAsJsonAsync(urlRequest, model))
                 {
                     string apiResponse = await response.Content.ReadAsStringAsync();
-                    user = JsonConvert.DeserializeObject<IdentityUser>(apiResponse);
-                }
-            }
-
-            urlRequest = $"{url}" + "Login/GetUserRoles/";
-
-            using (var client = MyHttp.GetHttpClient())
-            {
-                using (response = await client.PostAsJsonAsync(urlRequest, user))
-                {
-                    string apiResponse = await response.Content.ReadAsStringAsync();
-                    userRoles = JsonConvert.DeserializeObject<List<string>>(apiResponse).ToList();
+                    userRoles = JsonConvert.DeserializeObject<List<string>>(apiResponse);
                 }
             }
 
             CheckUserLabelContent = "";
             var bookWindow = App.PhoneBookWindow;
             bookWindow.ccRightPartPage = null;
-            if (userRoles.Contains("Admin"))
+
+            if (userRoles == null)
             {
+                CheckUserLabelContent = "Пользователь не найден, проверьте" +
+                                        "\nимя и пароль или зарегистрируйтесь !";
+                return;
+            }
+            else if (userRoles.Contains("Admin"))
+            {
+                if (App.MainWindow.IsInitialized)
+                {
+                    App.MainWindow.Close();
+                }
+                if (App.RegistrationWindow.IsInitialized)
+                {
+                    App.RegistrationWindow.Close();
+                }
                 bookWindow.miAddRecord.Visibility = Visibility.Visible;
                 bookWindow.miChangeRecord.Visibility = Visibility.Visible;
                 bookWindow.miDeleteRecord.Visibility = Visibility.Visible;
                 bookWindow.miUsers.Visibility = Visibility.Visible;
                 bookWindow.miRoles.Visibility = Visibility.Visible;
+                bookWindow.miRegister.Visibility = Visibility.Collapsed;
+                bookWindow.miLogIn.Visibility = Visibility.Collapsed;
                 bookWindow.miUserName.Visibility = Visibility.Visible;
-                bookWindow.miUserName.Header = user.UserName;
+                bookWindow.miUserName.Header = $"Hello {model.Email}";
                 bookWindow.miLogOut.Visibility = Visibility.Visible;
 
                 App.ActionsWithRecordView.bAddRecord.Visibility = Visibility.Visible;
@@ -244,21 +260,43 @@ namespace PhoneBookWPF.ViewModel
             }
             else if (!userRoles.Contains("Admin") && userRoles.Contains("User"))
             {
+                if (App.MainWindow.IsInitialized)
+                {
+                    App.MainWindow.Close();
+                }
+                if (App.RegistrationWindow.IsInitialized)
+                {
+                    App.RegistrationWindow.Close();
+                }
+
+                bookWindow.miRegister.Visibility = Visibility.Collapsed;
+                bookWindow.miLogIn.Visibility = Visibility.Collapsed;
                 bookWindow.miUserName.Visibility = Visibility.Visible;
-                bookWindow.miUserName.Header = user.UserName;
+                bookWindow.miUserName.Header = $"Hello {model.Email}";
                 bookWindow.miLogOut.Visibility = Visibility.Visible;
                 bookWindow.miAddRecord.Visibility = Visibility.Visible;
                 App.ActionsWithRecordView.bAddRecord.Visibility = Visibility.Visible;
             }
             else
             {
+                if (App.MainWindow.IsInitialized)
+                {
+                    App.MainWindow.Close();
+                }
+                if (App.RegistrationWindow.IsInitialized)
+                {
+                    App.RegistrationWindow.Close();
+                }
+
+                bookWindow.miRegister.Visibility = Visibility.Collapsed;
+                bookWindow.miLogIn.Visibility = Visibility.Collapsed;
                 bookWindow.miUserName.Visibility = Visibility.Visible;
-                bookWindow.miUserName.Header = user.UserName;
+                bookWindow.miUserName.Header = $"Hello {model.Email}";
                 bookWindow.miLogOut.Visibility = Visibility.Visible;
             }
 
-            (Window.GetWindow(App.Current.MainWindow) as MainWindow).Hide();
-            bookWindow.Show();
+            bookWindow.Activate();
+            bookWindow.Focus();
         }
     }
 }

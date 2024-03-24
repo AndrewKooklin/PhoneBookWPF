@@ -102,6 +102,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Commands\AddRecordCommand.cs" />
+    <Compile Include="Commands\DeleteRecordCommand.cs" />
+    <Compile Include="Commands\LogOutCommand.cs" />
     <Compile Include="Commands\OpenLogInWindowCommand.cs" />
     <Compile Include="Commands\OpenRegisterWindowCommand.cs" />
     <Compile Include="Commands\ReadRecordsCommand.cs" />
@@ -109,6 +112,7 @@
     <Compile Include="Commands\RedirectToLogInCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Commands\UpdateViewCommand.cs" />
+    <Compile Include="HelpMethods\CheckInputFieldsRecord.cs" />
     <Compile Include="HelpMethods\MyHttpClient.cs" />
     <Compile Include="HelpMethods\MyMultiValueConverter.cs" />
     <Compile Include="HelpMethods\Records.cs" />
@@ -130,6 +134,9 @@
     </Compile>
     <Compile Include="View\RegistrationWindow.xaml.cs">
       <DependentUpon>RegistrationWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UsersView.xaml.cs">
+      <DependentUpon>UsersView.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -156,6 +163,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\RegistrationWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UsersView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

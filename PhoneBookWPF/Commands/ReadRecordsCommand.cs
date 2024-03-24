@@ -33,6 +33,7 @@ namespace PhoneBookWPF.Commands
                 return;
             }
 
+            _phoneBookWindowViewModel.LeftCurrentView = null;
             _phoneBookWindowViewModel.LeftCurrentView = new RecordsView();
         }
     }

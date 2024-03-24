@@ -10,8 +10,8 @@
         Title="PhoneBook" 
         Height="420"
         MinHeight="420"
-        Width="610"
-        MinWidth="610"
+        Width="630"
+        MinWidth="630"
         WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
@@ -45,33 +45,33 @@
                       Header="Records"
                       Cursor="Hand">
                 <MenuItem x:Name="miGetRecords"
-                          Header="Прочитать"
+                          Header="Прочитать записи"
                           Cursor="Hand"
                           Command="{Binding UpdateViewCommand, Source={StaticResource PhoneBookWindowViewModel}}" 
                           CommandParameter="{Binding Header, ElementName=miGetRecords}">
                 </MenuItem>
                 <MenuItem x:Name="miGetDetails"
-                          Header="Детали"
+                          Header="Детали записи"
                           Cursor="Hand"
                           Command="{Binding UpdateViewCommand, Source={StaticResource PhoneBookWindowViewModel}}"
                           CommandParameter="{Binding Header, ElementName=miGetDetails}">
                 </MenuItem>
                 <MenuItem x:Name="miAddRecord"
-                          Header="Добавить"
+                          Header="Добавить запись"
                           Visibility="Collapsed"
                           Cursor="Hand"
                           Command="{Binding UpdateViewCommand, Source={StaticResource PhoneBookWindowViewModel}}" 
                           CommandParameter="{Binding Header, ElementName=miAddRecord}">
                 </MenuItem>
                 <MenuItem x:Name="miChangeRecord"
-                          Header="Изменить"
+                          Header="Изменить запись"
                           Visibility="Collapsed"
                           Cursor="Hand"
                           Command="{Binding UpdateViewCommand}" 
                           CommandParameter="{Binding Header, ElementName=miChangeRecord}">
                 </MenuItem>
                 <MenuItem x:Name="miDeleteRecord"
-                          Header="Удалить"
+                          Header="Удалить запись"
                           Visibility="Collapsed"
                           Cursor="Hand"
                           Command="{Binding UpdateViewCommand}" 
@@ -83,25 +83,25 @@
                       Visibility="Collapsed"
                       Cursor="Hand">
                 <MenuItem x:Name="miGetUsers"
-                          Header="Список"
+                          Header="Список пользователей"
                           Cursor="Hand"
                           Command="{Binding UpdateViewCommand}" 
                           CommandParameter="{Binding Header, ElementName=miOpenAccount}">
                 </MenuItem>
                 <MenuItem x:Name="miAddUser"
-                          Header="Добавить"
+                          Header="Добавить пользователя"
                           Cursor="Hand"
                           Command="{Binding UpdateViewCommand}" 
                           CommandParameter="{Binding Header, ElementName=miCloseAccount}">
                 </MenuItem>
                 <MenuItem x:Name="miChangeUser"
-                          Header="Изменить"
+                          Header="Изменить пользователя"
                           Cursor="Hand"
                           Command="{Binding UpdateViewCommand}" 
                           CommandParameter="{Binding Header, ElementName=miCloseAccount}">
                 </MenuItem>
                 <MenuItem x:Name="miDeleteUser"
-                          Header="Удалить"
+                          Header="Удалить пользователя"
                           Cursor="Hand"
                           Command="{Binding UpdateViewCommand}" 
                           CommandParameter="{Binding Header, ElementName=miCloseAccount}">
@@ -112,7 +112,7 @@
                       Visibility="Collapsed"
                       Cursor="Hand">
                 <MenuItem x:Name="miGetRoles"
-                          Header="Список"
+                          Header="Роли"
                           Command="{Binding UpdateViewCommand}" 
                           CommandParameter="{Binding Header, ElementName=miBetweenSelf}">
                 </MenuItem>
@@ -156,7 +156,7 @@
                       Header="Login"
                       Cursor="Hand"
                       Margin="0 0 2 0"
-                      Command="" 
+                      Command="{Binding OpenLogInWindowCommand, Source={StaticResource PhoneBookWindowViewModel}}" 
                       CommandParameter="">
             </MenuItem>
             <MenuItem x:Name="miRegister"
@@ -164,7 +164,7 @@
                    Foreground="Black"
                    Margin="0 0 2 0"
                    Cursor="Hand"
-                   Command="" 
+                   Command="{Binding OpenRegisterWindowCommand, Source={StaticResource PhoneBookWindowViewModel}}" 
                    CommandParameter="">
             </MenuItem>
 
@@ -180,7 +180,7 @@
                       Header="Logout"
                       Cursor="Hand"
                       Margin="0 0 2 0"
-                      Command="" 
+                      Command="{Binding LogOutCommand, Source={StaticResource PhoneBookWindowViewModel}}"
                       CommandParameter="">
             </MenuItem>
         </Menu>

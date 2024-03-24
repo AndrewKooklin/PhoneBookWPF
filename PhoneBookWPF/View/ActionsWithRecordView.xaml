@@ -8,7 +8,7 @@
              xmlns:viewModel="clr-namespace:PhoneBookWPF.ViewModel"
              xmlns:model="clr-namespace:PhoneBookWPF.Model"
              mc:Ignorable="d" 
-             d:DesignHeight="340" 
+             d:DesignHeight="360" 
              d:DesignWidth="205">
 
     <UserControl.Resources>
@@ -19,11 +19,12 @@
 
 
         <Style x:Key="ErrorRecordTextBlock" TargetType="{x:Type TextBlock}">
-            <Setter Property="Margin" Value="0 0 0 5"/>
-            <Setter Property="Width" Value="150"/>
-            <Setter Property="Height" Value="10"/>
-            <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Margin" Value="0"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="12"/>
+            <Setter Property="FontSize" Value="10"/>
             <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="Yellow"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
         </Style>
         <Style x:Key="RecordTextBlockHeader" TargetType="{x:Type TextBlock}">
@@ -71,6 +72,7 @@
             <RowDefinition Height="0.4*"/>
             <RowDefinition Height="0.2*"/>
             <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.2*"/>
             <RowDefinition Height="0.5*"/>
             <RowDefinition Height="0.5*"/>
         </Grid.RowDefinitions>
@@ -174,8 +176,14 @@
                  Style="{StaticResource RecordTextBox}"
                  TextWrapping="WrapWithOverflow">
         </TextBox>
+        <TextBlock x:Name="tbResult"
+                   Grid.Row="13"
+                   Grid.Column="1"
+                   Text="{Binding ResultOperation, Source={StaticResource PhoneBookWindowViewModel}}"
+                   Style="{StaticResource ErrorRecordTextBlock}">
+        </TextBlock>
         <StackPanel Orientation="Horizontal"
-                    Grid.Row="13"
+                    Grid.Row="14"
                     Grid.ColumnSpan="2"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
@@ -184,23 +192,43 @@
             <Button x:Name="bAddRecord"
                     Content="Добавить"
                     Visibility="Collapsed"
-                    Command="{}"
-                    CommandParameter=""
                     Style="{StaticResource RecordButton}"
-                    Cursor="Hand">
+                    Cursor="Hand"
+                    Command="{Binding AddRecordCommand, Source={StaticResource PhoneBookWindowViewModel}}">
+                <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource MyMultiValueConverter}">
+                        <Binding Path="Text" ElementName="tbRecordId"/>
+                        <Binding Path="Text" ElementName="tbLastName"/>
+                        <Binding Path="Text" ElementName="tbFirstName"/>
+                        <Binding Path="Text" ElementName="tbFathersName"/>
+                        <Binding Path="Text" ElementName="tbPhoneNumber"/>
+                        <Binding Path="Text" ElementName="tbAddress"/>
+                        <Binding Path="Text" ElementName="tbDescription"/>
+                    </MultiBinding>
+                </Button.CommandParameter>
             </Button>
             <Button x:Name="bDeleteRecord"
                     Content="Удалить"
                     Visibility="Collapsed"
-                    Command=""
-                    CommandParameter="{Binding ElementName=spRecord, Mode=OneWay}"
                     Style="{StaticResource RecordButton}"
-                    Cursor="Hand">
+                    Cursor="Hand"
+                    Command="{Binding DeleteRecordCommand, Source={StaticResource PhoneBookWindowViewModel}}">
+                <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource MyMultiValueConverter}">
+                        <Binding Path="Text" ElementName="tbRecordId"/>
+                        <Binding ElementName="tbLastName"/>
+                        <Binding ElementName="tbFirstName"/>
+                        <Binding ElementName="tbFathersName"/>
+                        <Binding ElementName="tbPhoneNumber"/>
+                        <Binding ElementName="tbAddress"/>
+                        <Binding ElementName="tbDescription"/>
+                    </MultiBinding>
+                </Button.CommandParameter>
             </Button>
         </StackPanel>
         <StackPanel Orientation="Horizontal"
                     Width="140"
-                    Grid.Row="14"
+                    Grid.Row="15"
                     Grid.ColumnSpan="2"
                     Margin="52 0 0 0"
                     HorizontalAlignment="Left"
@@ -209,7 +237,7 @@
                     Content="Изменить"
                     Visibility="Collapsed"
                     Command=""
-                    CommandParameter="{Binding ElementName=spRecord, Mode=OneWay}"
+                    CommandParameter=""
                     Style="{StaticResource RecordButton}"
                     Cursor="Hand">
             </Button>
@@ -217,7 +245,7 @@
                     Content="Очистить"
                     Visibility="Collapsed"
                     Command=""
-                    CommandParameter="{Binding ElementName=spRecord, Mode=OneWay}"
+                    CommandParameter=""
                     Style="{StaticResource RecordButton}"
                     Cursor="Hand">
             </Button>

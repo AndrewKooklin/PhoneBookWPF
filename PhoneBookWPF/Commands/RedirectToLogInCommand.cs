@@ -19,15 +19,22 @@ namespace PhoneBookWPF.Commands
 
         public void Execute(object parameter)
         {
-            if (parameter is RegistrationWindow)
+            if (!App.MainWindow.IsInitialized)
             {
-                var registrationWindow = (RegistrationWindow)parameter;
-                registrationWindow.Hide();
-                App.Current.MainWindow.Show();
+                App.MainWindow = new MainWindow();
+                App.MainWindow.Show();
+            }
+            if (!App.MainWindow.IsLoaded)
+            {
+                App.MainWindow = new MainWindow();
+                App.MainWindow.Show();
             }
             else
             {
-                return;
+                App.MainWindow.InitializeComponent();
+                App.MainWindow.Show();
+                App.MainWindow.Activate();
+                App.MainWindow.Focus();
             }
         }
     }

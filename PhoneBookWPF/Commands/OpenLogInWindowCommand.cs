@@ -18,13 +18,22 @@ namespace PhoneBookWPF.Commands
 
         public void Execute(object parameter)
         {
-            if (!App.Current.MainWindow.IsActive)
+            if (!App.MainWindow.IsInitialized)
             {
-                App.Current.MainWindow.Show();
+                App.MainWindow = new MainWindow();
+                App.MainWindow.Show();
+            }
+            if (!App.MainWindow.IsLoaded)
+            {
+                App.MainWindow = new MainWindow();
+                App.MainWindow.Show();
             }
             else
             {
-                App.Current.MainWindow.Activate();
+                App.MainWindow.InitializeComponent();
+                App.MainWindow.Show();
+                App.MainWindow.Activate();
+                App.MainWindow.Focus();
             }
         }
     }

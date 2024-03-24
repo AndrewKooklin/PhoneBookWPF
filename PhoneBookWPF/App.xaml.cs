@@ -23,6 +23,8 @@ namespace PhoneBookWPF
 
         public static ActionsWithRecordView ActionsWithRecordView = new ActionsWithRecordView();
 
+        public static new MainWindow MainWindow = new MainWindow();
+
         protected override void OnStartup(StartupEventArgs e)
         {
             App.PhoneBookWindow.Show();
