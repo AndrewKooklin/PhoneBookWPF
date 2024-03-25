@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace PhoneBookWPF.Commands
@@ -36,8 +37,7 @@ namespace PhoneBookWPF.Commands
             {
                 case "Прочитать записи":
                     {
-                        _pbWindowViewModel.LeftCurrentView = null;
-                        _pbWindowViewModel.LeftCurrentView = new RecordsView();
+                        _pbWindowViewModel.LeftCurrentView = App.RecordsView;
                         break;
                     }
                 case "Детали записи":
@@ -50,9 +50,19 @@ namespace PhoneBookWPF.Commands
                     }
                 case "Список пользователей":
                     {
-                        _pbWindowViewModel.LeftCurrentView = null;
-                        _pbWindowViewModel.RightCurrentView = null;
                         //_pbWindowViewModel.LeftCurrentView = 
+                        break;
+                    }
+                case "Список ролей":
+                    {
+                        _pbWindowViewModel.LeftCurrentView = App.RolesView;
+                        break;
+                    }
+                case "Добавить роль":
+                case "Удалить роль":
+                    {
+                        _pbWindowViewModel.LeftCurrentView = App.RolesView;
+                        _pbWindowViewModel.RightCurrentView = App.ActionsWithRoleView;
                         break;
                     }
                 default:break;

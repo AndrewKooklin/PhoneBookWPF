@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using PhoneBookWPF.HelpMethods;
+﻿using PhoneBookWPF.HelpMethods;
 using PhoneBookWPF.Model;
 using PhoneBookWPF.View;
 using System;
@@ -14,14 +13,14 @@ using System.Windows.Input;
 
 namespace PhoneBookWPF.Commands
 {
-    public class AddRecordCommand : ICommand
+    public class ChangeRecordCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
         private HttpClient _httpClient { get; set; }
         private string url = @"https://localhost:44379/api/";
         private string urlRequest = "";
         private HttpResponseMessage response = new HttpResponseMessage();
-        private bool apiResponseConvert;
+        private bool result;
         private Records records = new Records();
         private CheckInputFieldsRecord checkInputFieldsRecord = new CheckInputFieldsRecord();
 
@@ -36,7 +35,8 @@ namespace PhoneBookWPF.Commands
             {
                 return;
             }
-            var checkInput = checkInputFieldsRecord.CheckFields(App.ActionsWithRecordView, parameter);
+            bool checkInput = checkInputFieldsRecord.CheckFields(App.ActionsWithRecordView, parameter);
+
             if (!checkInput)
             {
                 return;
@@ -54,6 +54,7 @@ namespace PhoneBookWPF.Commands
 
                 PhoneBookRecord record = new PhoneBookRecord
                 {
+                    Id = Int32.Parse(recordId),
                     LastName = recordLastName,
                     FirstName = recordFirstName,
                     FathersName = recordFathersName,
@@ -62,19 +63,15 @@ namespace PhoneBookWPF.Commands
                     Description = recordDescription
                 };
 
-                urlRequest = $"{url}" + "CreateRecordAPI/CreateRecord/" + $"{record}";
+                urlRequest = $"{url}" + "EditRecord/EditRecord/" + $"{record}";
+
                 using (_httpClient = new HttpClient())
                 {
                     _httpClient.DefaultRequestHeaders.Accept.Clear();
                     _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    using (response = await _httpClient.PostAsJsonAsync(urlRequest, record))
-                    {
-                        string apiResponse = await response.Content.ReadAsStringAsync();
-                        apiResponseConvert = JsonConvert.DeserializeObject<bool>(apiResponse);
-                    }
+                    response = await _httpClient.PostAsJsonAsync(urlRequest, record);
                 }
-
-                if (!apiResponseConvert)
+                if (!response.IsSuccessStatusCode)
                 {
                     App.ActionsWithRecordView.tbResult.Text = "Ошибка, проверьте работу" +
                                                               "\nAPI сервера!";
@@ -84,7 +81,7 @@ namespace PhoneBookWPF.Commands
                 {
                     App.RecordsView.lbPhoneBookRecords.ItemsSource = null;
                     App.RecordsView.lbPhoneBookRecords.ItemsSource = records.GetRecords().GetAwaiter().GetResult();
-                    App.ActionsWithRecordView.tbResult.Text = "Запись добавлена!";
+                    App.ActionsWithRecordView.tbResult.Text = "Запись изменена!";
                 }
             }
         }

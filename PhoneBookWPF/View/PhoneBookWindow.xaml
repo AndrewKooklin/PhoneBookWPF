@@ -67,14 +67,14 @@
                           Header="Изменить запись"
                           Visibility="Collapsed"
                           Cursor="Hand"
-                          Command="{Binding UpdateViewCommand}" 
+                          Command="{Binding UpdateViewCommand, Source={StaticResource PhoneBookWindowViewModel}}" 
                           CommandParameter="{Binding Header, ElementName=miChangeRecord}">
                 </MenuItem>
                 <MenuItem x:Name="miDeleteRecord"
                           Header="Удалить запись"
                           Visibility="Collapsed"
                           Cursor="Hand"
-                          Command="{Binding UpdateViewCommand}" 
+                          Command="{Binding UpdateViewCommand, Source={StaticResource PhoneBookWindowViewModel}}" 
                           CommandParameter="{Binding Header, ElementName=miDeleteRecord}">
                 </MenuItem>
             </MenuItem>
@@ -85,25 +85,19 @@
                 <MenuItem x:Name="miGetUsers"
                           Header="Список пользователей"
                           Cursor="Hand"
-                          Command="{Binding UpdateViewCommand}" 
+                          Command="{Binding UpdateViewCommand, Source={StaticResource PhoneBookWindowViewModel}}" 
                           CommandParameter="{Binding Header, ElementName=miOpenAccount}">
                 </MenuItem>
                 <MenuItem x:Name="miAddUser"
                           Header="Добавить пользователя"
                           Cursor="Hand"
-                          Command="{Binding UpdateViewCommand}" 
-                          CommandParameter="{Binding Header, ElementName=miCloseAccount}">
-                </MenuItem>
-                <MenuItem x:Name="miChangeUser"
-                          Header="Изменить пользователя"
-                          Cursor="Hand"
-                          Command="{Binding UpdateViewCommand}" 
+                          Command="{Binding UpdateViewCommand, Source={StaticResource PhoneBookWindowViewModel}}" 
                           CommandParameter="{Binding Header, ElementName=miCloseAccount}">
                 </MenuItem>
                 <MenuItem x:Name="miDeleteUser"
                           Header="Удалить пользователя"
                           Cursor="Hand"
-                          Command="{Binding UpdateViewCommand}" 
+                          Command="{Binding UpdateViewCommand, Source={StaticResource PhoneBookWindowViewModel}}" 
                           CommandParameter="{Binding Header, ElementName=miCloseAccount}">
                 </MenuItem>
             </MenuItem>
@@ -112,33 +106,33 @@
                       Visibility="Collapsed"
                       Cursor="Hand">
                 <MenuItem x:Name="miGetRoles"
-                          Header="Роли"
-                          Command="{Binding UpdateViewCommand}" 
-                          CommandParameter="{Binding Header, ElementName=miBetweenSelf}">
+                          Header="Список ролей"
+                          Command="{Binding UpdateViewCommand, Source={StaticResource PhoneBookWindowViewModel}}" 
+                          CommandParameter="{Binding Header, ElementName=miGetRoles}">
                 </MenuItem>
                 <MenuItem x:Name="miAddRole"
                           Header="Добавить роль"
                           Cursor="Hand"
-                          Command="{Binding UpdateViewCommand}" 
-                          CommandParameter="{Binding Header, ElementName=miBetweenClients}">
+                          Command="{Binding UpdateViewCommand, Source={StaticResource PhoneBookWindowViewModel}}" 
+                          CommandParameter="{Binding Header, ElementName=miAddRole}">
                 </MenuItem>
                 <MenuItem x:Name="miDeleteRole"
                           Header="Удалить роль"
                           Cursor="Hand"
-                          Command="{Binding UpdateViewCommand}" 
-                          CommandParameter="{Binding Header, ElementName=miBetweenClients}">
+                          Command="{Binding UpdateViewCommand, Source={StaticResource PhoneBookWindowViewModel}}" 
+                          CommandParameter="{Binding Header, ElementName=miDeleteRole}">
                 </MenuItem>
                 <MenuItem x:Name="miAddRoleUser"
                           Header="Добавить роль пользователю"
                           Cursor="Hand"
-                          Command="{Binding UpdateViewCommand}" 
-                          CommandParameter="{Binding Header, ElementName=miCloseAccount}">
+                          Command="{Binding UpdateViewCommand, Source={StaticResource PhoneBookWindowViewModel}}" 
+                          CommandParameter="{Binding Header, ElementName=miAddRoleUser}">
                 </MenuItem>
                 <MenuItem x:Name="miDeleteRoleUser"
                           Header="Удалить роль у пользователя"
                           Cursor="Hand"
-                          Command="{Binding UpdateViewCommand}" 
-                          CommandParameter="{Binding Header, ElementName=miCloseAccount}">
+                          Command="{Binding UpdateViewCommand, Source={StaticResource PhoneBookWindowViewModel}}" 
+                          CommandParameter="{Binding Header, ElementName=miDeleteRoleUser}">
                 </MenuItem>
             </MenuItem>
         </Menu>

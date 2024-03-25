@@ -21,7 +21,11 @@ namespace PhoneBookWPF
 
         public static RecordsView RecordsView = new RecordsView();
 
+        public static RolesView RolesView = new RolesView();
+
         public static ActionsWithRecordView ActionsWithRecordView = new ActionsWithRecordView();
+
+        public static ActionsWithRoleView ActionsWithRoleView = new ActionsWithRoleView();
 
         public static new MainWindow MainWindow = new MainWindow();
 

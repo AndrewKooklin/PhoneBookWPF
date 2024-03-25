@@ -25,9 +25,10 @@ namespace PhoneBookWPF.Commands
         public event EventHandler CanExecuteChanged;
         private HttpClient _httpClient { get; set; }
         private string url = @"https://localhost:44379/api/";
-        string urlRequest = "";
-        HttpResponseMessage response = new HttpResponseMessage();
-        bool result;
+        private string urlRequest = "";
+        private HttpResponseMessage response = new HttpResponseMessage();
+        private bool result;
+        private Records records = new Records();
 
         public bool CanExecute(object parameter)
         {
@@ -39,7 +40,18 @@ namespace PhoneBookWPF.Commands
             if(parameter != null)
             {
                 var fieldElements = (object[])parameter;
-                string recordId = fieldElements[0].ToString();
+                TextBox tbrecordId = (TextBox)fieldElements[0];
+
+                if (String.IsNullOrEmpty(tbrecordId.Text))
+                {
+                    App.ActionsWithRecordView.tbResult.Text = "Выберите запись!";
+                    return;
+                }
+                else
+                {
+                    App.ActionsWithRecordView.tbResult.Text = "";
+                }
+
                 TextBox tbRecordLastName = (TextBox)fieldElements[1];
                 TextBox tbRecordFirstName = (TextBox)fieldElements[2];
                 TextBox tbRecordFathersName = (TextBox)fieldElements[3];
@@ -47,7 +59,7 @@ namespace PhoneBookWPF.Commands
                 TextBox tbRecordAddress = (TextBox)fieldElements[5];
                 TextBox tbRecordDescription = (TextBox)fieldElements[6];
 
-                urlRequest = $"{url}" + "DeleteRecord/DeleteRecord/" + $"{recordId}";
+                urlRequest = $"{url}" + "DeleteRecord/DeleteRecord/" + $"{tbrecordId.Text}";
                 using (_httpClient = new HttpClient())
                 {
                     _httpClient.DefaultRequestHeaders.Accept.Clear();
@@ -62,6 +74,7 @@ namespace PhoneBookWPF.Commands
                 }
                 else
                 {
+                    tbrecordId.Text = "";
                     tbRecordLastName.Text = "";
                     tbRecordFirstName.Text = "";
                     tbRecordFathersName.Text = "";
@@ -69,13 +82,8 @@ namespace PhoneBookWPF.Commands
                     tbRecordAddress.Text = "";
                     tbRecordDescription.Text = "";
 
-                    //Records records1 = new Records();
-                    //var window = App.Current.Windows.OfType<PhoneBookWindow>().SingleOrDefault(w => w.IsActive);
-
-                    //var records = (RecordsView)window.ccLeftPartPage;
-
-                    //records.lbPhoneBookRecords.ItemsSource = null;
-                    //records.lbPhoneBookRecords.ItemsSource = records1.GetRecords().GetAwaiter().GetResult();
+                    App.RecordsView.lbPhoneBookRecords.ItemsSource = null;
+                    App.RecordsView.lbPhoneBookRecords.ItemsSource = records.GetRecords().GetAwaiter().GetResult();
 
                     App.ActionsWithRecordView.tbResult.Text = "Запись удалена!";
                 }

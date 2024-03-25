@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 C:\repos\PhoneBookWPFTemp\PhoneBookWPF\App.xaml
-6-624193603
+8118895959
 
-31153130623
+37-1670030058
 30606126374
-MainWindow.xaml;View\ActionsWithRecordView.xaml;View\PhoneBookWindow.xaml;View\RecordsView.xaml;View\RegistrationWindow.xaml;View\UsersView.xaml;
+MainWindow.xaml;View\ActionsWithRecordView.xaml;View\ActionsWithRoleView.xaml;View\PhoneBookWindow.xaml;View\RecordsView.xaml;View\RegistrationWindow.xaml;View\RolesView.xaml;View\UsersView.xaml;
 
 False
 

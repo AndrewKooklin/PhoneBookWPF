@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Newtonsoft.Json;
 using PhoneBookWPF.Commands;
 using PhoneBookWPF.HelpMethods;
 using PhoneBookWPF.Model;
@@ -23,6 +24,8 @@ namespace PhoneBookWPF.ViewModel
         private string urlRequest = "";
         private HttpResponseMessage response = new HttpResponseMessage();
         private bool apiResponseConvert;
+        Records records = new Records();
+        Roles roles = new Roles();
 
         CheckInputFieldsRecord checkInputFieldsRecord = new CheckInputFieldsRecord();
 
@@ -31,86 +34,82 @@ namespace PhoneBookWPF.ViewModel
             ReadRecordsCommand = new ReadRecordsCommand(this);
             UpdateViewCommand = new UpdateViewCommand(this);
             PhoneBooks = new List<PhoneBookRecord>();
+            Roles = new List<IdentityRole>();
             PhoneBooks = records.GetRecords().GetAwaiter().GetResult();
+            Roles = roles.GetRoles().GetAwaiter().GetResult();
             RightCurrentView = new UserControl();
             OpenRegisterWindowCommand = new OpenRegisterWindowCommand();
             OpenLogInWindowCommand = new OpenLogInWindowCommand();
             LogOutCommand = new LogOutCommand();
-            AddRecordCommand = new RelayCommand(Execute, CanExecute);
+            AddRecordCommand = new AddRecordCommand();
             DeleteRecordCommand = new DeleteRecordCommand(this);
+            ChangeRecordCommand = new ChangeRecordCommand();
+            ClearTextCommand = new ClearTextCommand();
         }
 
-        private bool CanExecute(object parameter)
-        {
-            if (parameter == null)
-            {
-                return false;
-            }
-            return checkInputFieldsRecord.CheckFields(App.ActionsWithRecordView, parameter);
-        }
+        //private bool CanExecute(object parameter)
+        //{
+        //    if (parameter == null)
+        //    {
+        //        return false;
+        //    }
 
-        private async void Execute(object parameter)
-        {
-            if (parameter == null)
-            {
-                return;
-            }
-            CheckInputFieldsRecord checkInputFieldsRecord = new CheckInputFieldsRecord();
-            var resultCheck = checkInputFieldsRecord.CheckFields(App.ActionsWithRecordView, parameter);
+        //    return checkInputFieldsRecord.CheckFields(App.ActionsWithRecordView, parameter);
+        //}
 
-            if (!resultCheck)
-            {
-                return;
-            }
-            else
-            {
-                var fieldElements = (object[])parameter;
-                string recordId = fieldElements[0].ToString();
-                string recordLastName = fieldElements[1].ToString();
-                string recordFirstName = fieldElements[2].ToString();
-                string recordFathersName = fieldElements[3].ToString();
-                string recordPhoneNumber = fieldElements[4].ToString();
-                string recordAddress = fieldElements[5].ToString();
-                string recordDescription = fieldElements[6].ToString();
+        //private async void Execute(object parameter)
+        //{
+        //    if (parameter == null)
+        //    {
+        //        return;
+        //    }
+        //    else
+        //    {
+        //        var fieldElements = (object[])parameter;
+        //        string recordId = fieldElements[0].ToString();
+        //        string recordLastName = fieldElements[1].ToString();
+        //        string recordFirstName = fieldElements[2].ToString();
+        //        string recordFathersName = fieldElements[3].ToString();
+        //        string recordPhoneNumber = fieldElements[4].ToString();
+        //        string recordAddress = fieldElements[5].ToString();
+        //        string recordDescription = fieldElements[6].ToString();
 
-                PhoneBookRecord record = new PhoneBookRecord
-                {
-                    LastName = recordLastName,
-                    FirstName = recordFirstName,
-                    FathersName = recordFathersName,
-                    PhoneNumber = recordPhoneNumber,
-                    Address = recordAddress,
-                    Description = recordDescription
-                };
+        //        PhoneBookRecord record = new PhoneBookRecord
+        //        {
+        //            LastName = recordLastName,
+        //            FirstName = recordFirstName,
+        //            FathersName = recordFathersName,
+        //            PhoneNumber = recordPhoneNumber,
+        //            Address = recordAddress,
+        //            Description = recordDescription
+        //        };
 
-                urlRequest = $"{url}" + "CreateRecordAPI/CreateRecord/" + $"{record}";
-                using (_httpClient = new HttpClient())
-                {
-                    _httpClient.DefaultRequestHeaders.Accept.Clear();
-                    _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    using (response = await _httpClient.PostAsJsonAsync(urlRequest, record))
-                    {
-                        string apiResponse = await response.Content.ReadAsStringAsync();
-                        apiResponseConvert = JsonConvert.DeserializeObject<bool>(apiResponse);
-                    }
-                }
+        //        urlRequest = $"{url}" + "CreateRecordAPI/CreateRecord/" + $"{record}";
+        //        using (_httpClient = new HttpClient())
+        //        {
+        //            _httpClient.DefaultRequestHeaders.Accept.Clear();
+        //            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+        //            using (response = await _httpClient.PostAsJsonAsync(urlRequest, record))
+        //            {
+        //                string apiResponse = await response.Content.ReadAsStringAsync();
+        //                apiResponseConvert = JsonConvert.DeserializeObject<bool>(apiResponse);
+        //            }
+        //        }
 
-                if (!apiResponseConvert)
-                {
-                    App.ActionsWithRecordView.tbResult.Text = "Ошибка, проверьте работу" +
-                                                              "\nAPI сервера!";
-                    return;
-                }
-                else
-                {
-                    App.PhoneBookWindow.ccLeftPartPage = null;
-                    App.PhoneBookWindow.ccLeftPartPage = new RecordsView();
-                    App.ActionsWithRecordView.tbResult.Text = "Запись добавлена!";
-                }
-            }
-        }
-
-        Records records = new Records();
+        //        if (!apiResponseConvert)
+        //        {
+        //            App.ActionsWithRecordView.tbResult.Text = "Ошибка, проверьте работу" +
+        //                                                      "\nAPI сервера!";
+        //            return;
+        //        }
+        //        else
+        //        {
+        //            App.RecordsView.lbPhoneBookRecords.ItemsSource = null;
+        //            App.RecordsView.lbPhoneBookRecords.ItemsSource = records.GetRecords().GetAwaiter().GetResult();
+        //            App.ActionsWithRecordView.tbResult.Text = "Запись добавлена!";
+        //        }
+        //    }
+        //}
 
         public ICommand UpdateViewCommand { get; set; }
 
@@ -125,6 +124,11 @@ namespace PhoneBookWPF.ViewModel
         public ICommand AddRecordCommand { get; set; }
 
         public ICommand DeleteRecordCommand { get; set; }
+
+        public ICommand ChangeRecordCommand { get; set; }
+
+        public ICommand ClearTextCommand { get; set; }
+
 
         private UserControl _leftCurrentView;
 
@@ -171,6 +175,21 @@ namespace PhoneBookWPF.ViewModel
             }
         }
 
+        private List<IdentityRole> _roles;
+
+        public List<IdentityRole> Roles
+        {
+            get
+            {
+                return _roles;
+            }
+            set
+            {
+                _roles = value;
+                OnPropertyChanged(nameof(Roles));
+            }
+        }
+
         private PhoneBookRecord _selectedRecord;
 
         public PhoneBookRecord SelectedRecord
@@ -192,6 +211,8 @@ namespace PhoneBookWPF.ViewModel
                     actions.tbPhoneNumber.Text = _selectedRecord.PhoneNumber;
                     actions.tbAddress.Text = _selectedRecord.Address;
                     actions.tbDescription.Text = _selectedRecord.Description;
+
+                    App.ActionsWithRecordView.tbResult.Text = "";
                 }
 
                 return _selectedRecord;
@@ -201,6 +222,35 @@ namespace PhoneBookWPF.ViewModel
                 //_selectedRecord = new PhoneBookRecord();
                 _selectedRecord = value;
                 OnPropertyChanged(nameof(SelectedRecord));
+            }
+        }
+
+        private RoleModel _selectedRole;
+
+        public RoleModel SelectedRole
+        {
+            get
+            {
+                if (_selectedRole == null)
+                {
+                    return null;
+                }
+                else
+                {
+                    this.RightCurrentView = App.ActionsWithRoleView;
+                    var actions = (ActionsWithRoleView)this.RightCurrentView;
+                    actions.tbRoleId.Text = _selectedRecord.Id.ToString();
+                    actions.tbRoleName.Text = _selectedRecord.LastName;
+
+                    App.ActionsWithRecordView.tbResult.Text = "";
+                }
+
+                return _selectedRole;
+            }
+            set
+            {
+                _selectedRole = value;
+                OnPropertyChanged(nameof(SelectedRole));
             }
         }
 

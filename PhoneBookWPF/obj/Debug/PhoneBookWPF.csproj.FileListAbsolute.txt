@@ -110,3 +110,7 @@ C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\ActionsWithRecordView.g.cs
 C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\ActionsWithRecordView.baml
 C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\UsersView.g.cs
 C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\UsersView.baml
+C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\ActionsWithRoleView.g.cs
+C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\RolesView.g.cs
+C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\ActionsWithRoleView.baml
+C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\RolesView.baml
