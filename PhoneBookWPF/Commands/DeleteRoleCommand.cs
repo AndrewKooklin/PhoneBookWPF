@@ -1,7 +1,5 @@
 ﻿using Newtonsoft.Json;
 using PhoneBookWPF.HelpMethods;
-using PhoneBookWPF.Model;
-using PhoneBookWPF.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,11 +8,12 @@ using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace PhoneBookWPF.Commands
 {
-    public class AddRecordCommand : ICommand
+    public class DeleteRoleCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
         private HttpClient _httpClient { get; set; }
@@ -22,7 +21,7 @@ namespace PhoneBookWPF.Commands
         private string urlRequest = "";
         private HttpResponseMessage response = new HttpResponseMessage();
         private bool apiResponseConvert;
-        private Records records = new Records();
+        private Roles roles = new Roles();
         private CheckInputFields checkInputFields = new CheckInputFields();
 
         public bool CanExecute(object parameter)
@@ -36,7 +35,7 @@ namespace PhoneBookWPF.Commands
             {
                 return;
             }
-            var checkInput = checkInputFields.CheckFieldsRecord(App.ActionsWithRecordView, parameter);
+            var checkInput = checkInputFields.CheckFieldsRole(App.ActionsWithRoleView, parameter);
             if (!checkInput)
             {
                 return;
@@ -44,30 +43,26 @@ namespace PhoneBookWPF.Commands
             else
             {
                 var fieldElements = (object[])parameter;
-                string recordId = fieldElements[0].ToString();
-                string recordLastName = fieldElements[1].ToString();
-                string recordFirstName = fieldElements[2].ToString();
-                string recordFathersName = fieldElements[3].ToString();
-                string recordPhoneNumber = fieldElements[4].ToString();
-                string recordAddress = fieldElements[5].ToString();
-                string recordDescription = fieldElements[6].ToString();
+                TextBox tbRoleId = (TextBox)fieldElements[0];
+                string roleId = tbRoleId.Text;
+                //TextBox tbRoleName = (TextBox)fieldElements[1];
 
-                PhoneBookRecord record = new PhoneBookRecord
+                if (String.IsNullOrEmpty(roleId))
                 {
-                    LastName = recordLastName,
-                    FirstName = recordFirstName,
-                    FathersName = recordFathersName,
-                    PhoneNumber = recordPhoneNumber,
-                    Address = recordAddress,
-                    Description = recordDescription
-                };
+                    App.ActionsWithRoleView.tbResult.Text = "Выберите роль!";
+                    return;
+                }
+                else
+                {
+                    App.ActionsWithRoleView.tbResult.Text = "";
+                }
 
-                urlRequest = $"{url}" + "CreateRecordAPI/CreateRecord/" + $"{record}";
+                urlRequest = $"{url}" + "RolesAPI/DeleteRole/" + $"{roleId}";
                 using (_httpClient = new HttpClient())
                 {
                     _httpClient.DefaultRequestHeaders.Accept.Clear();
                     _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    using (response = await _httpClient.PostAsJsonAsync(urlRequest, record))
+                    using (response = await _httpClient.PostAsJsonAsync(urlRequest, roleId))
                     {
                         string apiResponse = await response.Content.ReadAsStringAsync();
                         apiResponseConvert = JsonConvert.DeserializeObject<bool>(apiResponse);
@@ -76,15 +71,15 @@ namespace PhoneBookWPF.Commands
 
                 if (!apiResponseConvert)
                 {
-                    App.ActionsWithRecordView.tbResult.Text = "Ошибка, проверьте работу" +
+                    App.ActionsWithRoleView.tbResult.Text = "Ошибка, проверьте работу" +
                                                               "\nAPI сервера!";
                     return;
                 }
                 else
                 {
-                    App.RecordsView.lbPhoneBookRecords.ItemsSource = null;
-                    App.RecordsView.lbPhoneBookRecords.ItemsSource = records.GetRecords().GetAwaiter().GetResult();
-                    App.ActionsWithRecordView.tbResult.Text = "Запись добавлена!";
+                    App.RolesView.lbRoles.ItemsSource = null;
+                    App.RolesView.lbRoles.ItemsSource = roles.GetRoles().GetAwaiter().GetResult();
+                    App.ActionsWithRoleView.tbResult.Text = "Роль удалена!";
                 }
             }
         }

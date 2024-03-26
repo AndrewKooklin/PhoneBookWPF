@@ -100,6 +100,18 @@
                           Command="{Binding UpdateViewCommand, Source={StaticResource PhoneBookWindowViewModel}}" 
                           CommandParameter="{Binding Header, ElementName=miCloseAccount}">
                 </MenuItem>
+                <MenuItem x:Name="miAddRoleUser"
+                          Header="Добавить роль пользователю"
+                          Cursor="Hand"
+                          Command="{Binding UpdateViewCommand, Source={StaticResource PhoneBookWindowViewModel}}" 
+                          CommandParameter="{Binding Header, ElementName=miAddRoleUser}">
+                </MenuItem>
+                <MenuItem x:Name="miDeleteRoleUser"
+                          Header="Удалить роль у пользователя"
+                          Cursor="Hand"
+                          Command="{Binding UpdateViewCommand, Source={StaticResource PhoneBookWindowViewModel}}" 
+                          CommandParameter="{Binding Header, ElementName=miDeleteRoleUser}">
+                </MenuItem>
             </MenuItem>
             <MenuItem x:Name="miRoles"
                       Header="Roles"
@@ -121,18 +133,6 @@
                           Cursor="Hand"
                           Command="{Binding UpdateViewCommand, Source={StaticResource PhoneBookWindowViewModel}}" 
                           CommandParameter="{Binding Header, ElementName=miDeleteRole}">
-                </MenuItem>
-                <MenuItem x:Name="miAddRoleUser"
-                          Header="Добавить роль пользователю"
-                          Cursor="Hand"
-                          Command="{Binding UpdateViewCommand, Source={StaticResource PhoneBookWindowViewModel}}" 
-                          CommandParameter="{Binding Header, ElementName=miAddRoleUser}">
-                </MenuItem>
-                <MenuItem x:Name="miDeleteRoleUser"
-                          Header="Удалить роль у пользователя"
-                          Cursor="Hand"
-                          Command="{Binding UpdateViewCommand, Source={StaticResource PhoneBookWindowViewModel}}" 
-                          CommandParameter="{Binding Header, ElementName=miDeleteRoleUser}">
                 </MenuItem>
             </MenuItem>
         </Menu>

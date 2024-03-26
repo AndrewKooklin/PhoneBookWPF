@@ -22,7 +22,7 @@ namespace PhoneBookWPF.Commands
         private HttpResponseMessage response = new HttpResponseMessage();
         private bool result;
         private Records records = new Records();
-        private CheckInputFieldsRecord checkInputFieldsRecord = new CheckInputFieldsRecord();
+        private CheckInputFields checkInputFieldsRecord = new CheckInputFields();
 
         public bool CanExecute(object parameter)
         {
@@ -35,7 +35,7 @@ namespace PhoneBookWPF.Commands
             {
                 return;
             }
-            bool checkInput = checkInputFieldsRecord.CheckFields(App.ActionsWithRecordView, parameter);
+            bool checkInput = checkInputFieldsRecord.CheckFieldsRecord(App.ActionsWithRecordView, parameter);
 
             if (!checkInput)
             {

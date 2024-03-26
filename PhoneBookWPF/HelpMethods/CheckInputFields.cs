@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace PhoneBookWPF.HelpMethods
 {
-    public class CheckInputFieldsRecord
+    public class CheckInputFields
     {
-        public bool CheckFields(ActionsWithRecordView recordView, object fields)
+        public bool CheckFieldsRecord(ActionsWithRecordView recordView, object fields)
         {
             var fieldElements = (object[])fields;
             string recordId = fieldElements[0].ToString();
@@ -84,6 +84,35 @@ namespace PhoneBookWPF.HelpMethods
                 recordView.tbErrorFirstName.Text = "";
                 recordView.tbErrorFathersName.Text = "";
                 recordView.tbErrorPhoneNumber.Text = "";
+                return true;
+            }
+        }
+
+        public bool CheckFieldsRole(ActionsWithRoleView roleView, object fields)
+        {
+            var fieldElements = (object[])fields;
+            string roleId = fieldElements[0].ToString();
+            string roleName = fieldElements[1].ToString();
+
+            //if (!String.IsNullOrEmpty(roleId))
+            //{
+            //    roleView.tbRoleName.Text = "";
+            //    return false;
+            //}
+
+            if (String.IsNullOrEmpty(roleName))
+            {
+                roleView.tbErrorRoleName.Text = "Заполните поле \"Роль\"";
+                return false;
+            }
+            else if (!String.IsNullOrEmpty(roleName) && roleName.Length < 3)
+            {
+                roleView.tbErrorRoleName.Text = "Длина не менее 3 символов";
+                return false;
+            }
+            else
+            {
+                roleView.tbRoleName.Text = "";
                 return true;
             }
         }

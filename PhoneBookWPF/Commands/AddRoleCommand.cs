@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using Newtonsoft.Json;
 using PhoneBookWPF.HelpMethods;
 using PhoneBookWPF.Model;
-using PhoneBookWPF.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ using System.Windows.Input;
 
 namespace PhoneBookWPF.Commands
 {
-    public class AddRecordCommand : ICommand
+    public class AddRoleCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
         private HttpClient _httpClient { get; set; }
@@ -22,7 +22,7 @@ namespace PhoneBookWPF.Commands
         private string urlRequest = "";
         private HttpResponseMessage response = new HttpResponseMessage();
         private bool apiResponseConvert;
-        private Records records = new Records();
+        private Roles roles = new Roles();
         private CheckInputFields checkInputFields = new CheckInputFields();
 
         public bool CanExecute(object parameter)
@@ -36,7 +36,7 @@ namespace PhoneBookWPF.Commands
             {
                 return;
             }
-            var checkInput = checkInputFields.CheckFieldsRecord(App.ActionsWithRecordView, parameter);
+            var checkInput = checkInputFields.CheckFieldsRole(App.ActionsWithRoleView, parameter);
             if (!checkInput)
             {
                 return;
@@ -44,30 +44,20 @@ namespace PhoneBookWPF.Commands
             else
             {
                 var fieldElements = (object[])parameter;
-                string recordId = fieldElements[0].ToString();
-                string recordLastName = fieldElements[1].ToString();
-                string recordFirstName = fieldElements[2].ToString();
-                string recordFathersName = fieldElements[3].ToString();
-                string recordPhoneNumber = fieldElements[4].ToString();
-                string recordAddress = fieldElements[5].ToString();
-                string recordDescription = fieldElements[6].ToString();
+                string roleId = fieldElements[0].ToString();
+                string roleName = fieldElements[1].ToString();
 
-                PhoneBookRecord record = new PhoneBookRecord
+                IdentityRole role = new IdentityRole
                 {
-                    LastName = recordLastName,
-                    FirstName = recordFirstName,
-                    FathersName = recordFathersName,
-                    PhoneNumber = recordPhoneNumber,
-                    Address = recordAddress,
-                    Description = recordDescription
+                    Name = roleName
                 };
 
-                urlRequest = $"{url}" + "CreateRecordAPI/CreateRecord/" + $"{record}";
+                urlRequest = $"{url}" + "RolesAPI/CreateRole/" + $"{role}";
                 using (_httpClient = new HttpClient())
                 {
                     _httpClient.DefaultRequestHeaders.Accept.Clear();
                     _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-                    using (response = await _httpClient.PostAsJsonAsync(urlRequest, record))
+                    using (response = await _httpClient.PostAsJsonAsync(urlRequest, role))
                     {
                         string apiResponse = await response.Content.ReadAsStringAsync();
                         apiResponseConvert = JsonConvert.DeserializeObject<bool>(apiResponse);
@@ -76,15 +66,15 @@ namespace PhoneBookWPF.Commands
 
                 if (!apiResponseConvert)
                 {
-                    App.ActionsWithRecordView.tbResult.Text = "Ошибка, проверьте работу" +
-                                                              "\nAPI сервера!";
+                    App.ActionsWithRecordView.tbResult.Text = "Роль уже существует!";
                     return;
                 }
                 else
                 {
-                    App.RecordsView.lbPhoneBookRecords.ItemsSource = null;
-                    App.RecordsView.lbPhoneBookRecords.ItemsSource = records.GetRecords().GetAwaiter().GetResult();
-                    App.ActionsWithRecordView.tbResult.Text = "Запись добавлена!";
+                    App.RolesView.lbRoles.ItemsSource = null;
+                    App.RolesView.lbRoles.ItemsSource = roles.GetRoles().GetAwaiter().GetResult();
+                    App.ActionsWithRoleView.tbErrorRoleName.Text = "";
+                    App.ActionsWithRoleView.tbResult.Text = "Роль добавлена!";
                 }
             }
         }

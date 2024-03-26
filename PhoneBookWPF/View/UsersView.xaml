@@ -4,9 +4,99 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PhoneBookWPF.View"
+             xmlns:viewModel="clr-namespace:PhoneBookWPF.ViewModel"
+             xmlns:help="clr-namespace:PhoneBookWPF.HelpMethods"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-            
+             d:DesignHeight="450" 
+             d:DesignWidth="400">
+    
+    <Grid x:Name="gRecords">
+        <Grid.Resources>
+            <viewModel:PhoneBookWindowViewModel x:Key="PhoneBookWindowViewModel"/>
+            <help:MyMultiValueConverter x:Key="MyMultiValue"/>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="3*"/>
+            <RowDefinition Height="6*"/>
+            <RowDefinition Height="80*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Label x:Name="ErrorSelection"
+                   Content="{Binding ErrorSelection, Source={StaticResource PhoneBookWindowViewModel}}"
+                   FontSize="17"
+                   Foreground="Yellow"
+                   Margin="2"
+                   HorizontalAlignment="Left"/>
+
+        <StackPanel x:Name="spUsersHeaders"
+                    Grid.Row="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Left"
+                    Margin="10,5,0,2">
+            <Button x:Name="bUserId"
+                    Content="UserId" 
+                    Width="150"
+                    Margin="0"
+                    Background="PaleGreen"/>
+            <Button x:Name="bEmail"
+                    Content="Email" 
+                    Width="80"
+                    Margin="0"
+                    Background="PaleGreen"/>
+            <Button x:Name="bPasswordHash"
+                    Content="PasswordHash" 
+                    Width="150"
+                    Margin="0"
+                    Background="PaleGreen"/>
+
+        </StackPanel>
+
+
+        <StackPanel x:Name="spUsersContent" 
+                        Grid.Row="2" 
+                        Margin="10 0 0 0" 
+                        HorizontalAlignment="Left" 
+                        VerticalAlignment="Top"
+                        ScrollViewer.VerticalScrollBarVisibility="Auto">
+            <ListBox x:Name="lbUsers"
+                         ItemsSource="{Binding Users, Source={StaticResource PhoneBookWindowViewModel}}"
+                         SelectedItem="{Binding SelectedUser, Source={StaticResource PhoneBookWindowViewModel}, UpdateSourceTrigger=PropertyChanged}"
+                         Margin="0" 
+                         Background="#FFDFFFCE"
+                         FontSize="14">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Black" 
+                                    BorderThickness="0 0 0 1" 
+                                    Padding="0" 
+                                    Margin="0">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock x:Name="tbId" 
+                                               Text="{Binding Id}"
+                                               Width="150"
+                                               Margin="0 0 0 0"
+                                               TextWrapping="WrapWithOverflow"/>
+                                <TextBlock x:Name="tbEmail" 
+                                               Text="{Binding Email}"
+                                               Width="80"
+                                               Margin="0 0 0 0"
+                                               TextAlignment="Center"/>
+                                <TextBlock x:Name="tbPasswordHash" 
+                                               Text="{Binding PasswordHash}"
+                                               Width="150"
+                                               Margin="3 0 0 0"
+                                               TextWrapping="WrapWithOverflow"/>
+
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+
     </Grid>
 </UserControl>

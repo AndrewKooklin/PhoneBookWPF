@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace PhoneBookWPF.Model
 {
-    public class RoleModel : IdentityRole
+    public class UserModel : IdentityUser
     {
-        public string RoleId { get; set; }
+        public override string Id { get; set; }
 
-        public string RoleName { get; set; }
+        public override string Email { get; set; }
+
+        public string Password { get; set; }
     }
 }

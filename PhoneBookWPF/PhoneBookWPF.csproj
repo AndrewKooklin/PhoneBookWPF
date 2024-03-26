@@ -103,9 +103,13 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Commands\AddRecordCommand.cs" />
+    <Compile Include="Commands\AddRoleCommand.cs" />
+    <Compile Include="Commands\AddUserCommand.cs" />
     <Compile Include="Commands\ChangeRecordCommand.cs" />
     <Compile Include="Commands\ClearTextCommand.cs" />
     <Compile Include="Commands\DeleteRecordCommand.cs" />
+    <Compile Include="Commands\DeleteRoleCommand.cs" />
+    <Compile Include="Commands\DeleteUserCommand.cs" />
     <Compile Include="Commands\LogOutCommand.cs" />
     <Compile Include="Commands\OpenLogInWindowCommand.cs" />
     <Compile Include="Commands\OpenRegisterWindowCommand.cs" />
@@ -114,24 +118,32 @@
     <Compile Include="Commands\RedirectToLogInCommand.cs" />
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Commands\UpdateViewCommand.cs" />
-    <Compile Include="HelpMethods\CheckInputFieldsRecord.cs" />
+    <Compile Include="HelpMethods\CheckInputFields.cs" />
     <Compile Include="HelpMethods\MyHttpClient.cs" />
     <Compile Include="HelpMethods\MyMultiValueConverter.cs" />
     <Compile Include="HelpMethods\Records.cs" />
     <Compile Include="HelpMethods\Roles.cs" />
+    <Compile Include="HelpMethods\Users.cs" />
     <Compile Include="Model\LoginModel.cs" />
     <Compile Include="Model\PhoneBookRecord.cs" />
     <Compile Include="Model\RegisterModel.cs" />
     <Compile Include="Model\RoleModel.cs" />
+    <Compile Include="Model\UserModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\PhoneBookWindowViewModel.cs" />
     <Compile Include="ViewModel\RegistrationWindowViewModel.cs" />
+    <Compile Include="View\ActionDeleteUserView.xaml.cs">
+      <DependentUpon>ActionDeleteUserView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\ActionsWithRecordView.xaml.cs">
       <DependentUpon>ActionsWithRecordView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ActionsWithRoleView.xaml.cs">
       <DependentUpon>ActionsWithRoleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActionAddUserView.xaml.cs">
+      <DependentUpon>ActionAddUserView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PhoneBookWindow.xaml.cs">
       <DependentUpon>PhoneBookWindow.xaml</DependentUpon>
@@ -160,11 +172,19 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\ActionDeleteUserView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\ActionsWithRecordView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ActionsWithRoleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActionAddUserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

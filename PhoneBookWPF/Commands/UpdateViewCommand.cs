@@ -50,7 +50,19 @@ namespace PhoneBookWPF.Commands
                     }
                 case "Список пользователей":
                     {
-                        //_pbWindowViewModel.LeftCurrentView = 
+                        _pbWindowViewModel.LeftCurrentView = App.UsersView;
+                        break;
+                    }
+                case "Добавить пользователя":
+                    {
+                        _pbWindowViewModel.LeftCurrentView = App.UsersView;
+                        _pbWindowViewModel.RightCurrentView = App.ActionAddUserView;
+                        break;
+                    }
+                case "Удалить пользователя":
+                    {
+                        _pbWindowViewModel.LeftCurrentView = App.UsersView;
+                        _pbWindowViewModel.RightCurrentView = App.ActionDeleteUserView;
                         break;
                     }
                 case "Список ролей":
