@@ -217,13 +217,14 @@ namespace PhoneBookWPF.ViewModel
             {
                 if (_selectedUser == null)
                 {
+                    App.ActionDeleteUserView.tbResult.Text = "Выберите пользователя";
                     return null;
                 }
                 else
                 {
                     App.ActionDeleteUserView.tbUserId.Text = _selectedUser.Id;
                     App.ActionDeleteUserView.tbEmail.Text = _selectedUser.Email;
-                    App.ActionsWithRecordView.tbResult.Text = "";
+                    App.ActionDeleteUserView.tbResult.Text = "";
                 }
 
                 return _selectedUser;

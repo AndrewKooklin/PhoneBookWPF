@@ -36,7 +36,7 @@ namespace PhoneBookWPF.Commands
             {
                 return;
             }
-            var checkInput = checkInputFields.CheckFieldsUser(App.ActionAddUserView, parameter);
+            var checkInput = checkInputFields.CheckFieldsAddUser(App.ActionAddUserView, parameter);
             if (!checkInput)
             {
                 return;

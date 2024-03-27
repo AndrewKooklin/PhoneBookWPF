@@ -218,7 +218,7 @@ namespace PhoneBookWPF.ViewModel
             RegisterModel model = new RegisterModel();
             //model.UserName = userNameValue;
             model.Password = passwordValue;
-            model.EMail = eMailValue;
+            model.Email = eMailValue;
             _httpClient = new HttpClient();
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));

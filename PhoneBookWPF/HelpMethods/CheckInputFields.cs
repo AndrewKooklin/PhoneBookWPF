@@ -118,7 +118,7 @@ namespace PhoneBookWPF.HelpMethods
             }
         }
 
-        public bool CheckFieldsUser(ActionAddUserView userView, object fields)
+        public bool CheckFieldsAddUser(ActionAddUserView userView, object fields)
         {
             var fieldElements = (object[])fields;
             string userEmail = fieldElements[0].ToString();
@@ -166,6 +166,53 @@ namespace PhoneBookWPF.HelpMethods
             {
                 userView.tbErrorEmail.Text = "";
                 userView.tbErrorPassword.Text = "";
+                return true;
+            }
+        }
+
+        public bool CheckFieldsDeleteUser(ActionDeleteUserView userView, object fields)
+        {
+            var fieldElements = (object[])fields;
+            string userId = fieldElements[0].ToString();
+            string userEmail = fieldElements[1].ToString();
+
+            if (String.IsNullOrEmpty(userId))
+            {
+                userView.tbResult.Text = "Выберите пользователя";
+                return false;
+            }
+            if (String.IsNullOrEmpty(userEmail))
+            {
+                userView.tbErrorEmail.Text = "Заполните поле \"Email\"";
+                return false;
+            }
+            else if (!String.IsNullOrEmpty(userEmail))
+            {
+                var valid = true;
+
+                try
+                {
+                    var emailAddress = new MailAddress(userEmail);
+                }
+                catch
+                {
+                    valid = false;
+                }
+                if (valid == false)
+                {
+                    userView.tbErrorEmail.Text = "Поле \"Email\" формата name@site.com";
+                    return false;
+                }
+                else
+                {
+                    userView.tbErrorEmail.Text = "";
+                    return true;
+                }
+            }
+            else
+            {
+                userView.tbErrorEmail.Text = "";
+                userView.tbResult.Text = "";
                 return true;
             }
         }

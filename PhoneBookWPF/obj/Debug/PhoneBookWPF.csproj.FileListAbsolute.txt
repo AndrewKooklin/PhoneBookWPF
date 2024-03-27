@@ -116,3 +116,5 @@ C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\ActionsWithRoleView.baml
 C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\RolesView.baml
 C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\ActionsWithUserView.g.cs
 C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\ActionsWithUserView.baml
+C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\ActionDeleteUserView.g.cs
+C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\ActionAddUserView.g.cs
