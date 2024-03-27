@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -113,6 +114,58 @@ namespace PhoneBookWPF.HelpMethods
             else
             {
                 roleView.tbRoleName.Text = "";
+                return true;
+            }
+        }
+
+        public bool CheckFieldsUser(ActionAddUserView userView, object fields)
+        {
+            var fieldElements = (object[])fields;
+            string userEmail = fieldElements[0].ToString();
+            string userPassword = fieldElements[1].ToString();
+
+            if (String.IsNullOrEmpty(userEmail))
+            {
+                userView.tbErrorEmail.Text = "Заполните поле \"Email\"";
+                return false;
+            }
+            else if (!String.IsNullOrEmpty(userEmail))
+            {
+                var valid = true;
+
+                try
+                {
+                    var emailAddress = new MailAddress(userEmail);
+                }
+                catch
+                {
+                    valid = false;
+                }
+                if(valid == false)
+                {
+                    userView.tbErrorEmail.Text = "Заполните поле \"Email\"";
+                    return false;
+                }
+                else
+                {
+                    userView.tbErrorEmail.Text = "";
+                    return true;
+                }
+            }
+            if (String.IsNullOrEmpty(userPassword))
+            {
+                userView.tbErrorPassword.Text = "Заполните поле \"Password\"";
+                return false;
+            }
+            else if (!String.IsNullOrEmpty(userPassword) && userPassword.Length < 3)
+            {
+                userView.tbErrorPassword.Text = "Длина не менее 3 символов";
+                return false;
+            }
+            else
+            {
+                userView.tbErrorEmail.Text = "";
+                userView.tbErrorPassword.Text = "";
                 return true;
             }
         }

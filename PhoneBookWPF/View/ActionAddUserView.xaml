@@ -75,9 +75,6 @@
         <TextBlock Text="Add User"
                    Grid.ColumnSpan="2"
                    Style="{StaticResource UserTextBlockHeader}"></TextBlock>
-        <TextBox x:Name="tbUserId"
-                 Text="{Binding Id, Source={StaticResource UserModel}, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"
-                 Visibility="Collapsed"></TextBox>
         <TextBlock x:Name="tbErrorEmail"
                    Grid.Row="1"
                    Grid.ColumnSpan="2"
@@ -125,7 +122,6 @@
                     Command="{Binding AddUserCommand, Source={StaticResource PhoneBookWindowViewModel}}">
                 <Button.CommandParameter>
                     <MultiBinding Converter="{StaticResource MyMultiValueConverter}">
-                        <Binding Path="Text" ElementName="tbUserId"/>
                         <Binding Path="Text" ElementName="tbEmail"/>
                         <Binding Path="Text" ElementName="tbPassword"/>
                     </MultiBinding>
