@@ -8,8 +8,8 @@
              xmlns:viewModel="clr-namespace:PhoneBookWPF.ViewModel"
              xmlns:model="clr-namespace:PhoneBookWPF.Model"
              mc:Ignorable="d" 
-             d:DesignHeight="170" 
-             d:DesignWidth="205">
+             d:DesignHeight="150" 
+             d:DesignWidth="300">
     
     <UserControl.Resources>
 
@@ -65,10 +65,10 @@
             <RowDefinition Height="0.2*"/>
             <RowDefinition Height="0.35*"/>
             <RowDefinition Height="0.3*"/>
-            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="0.7*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.8*"/>
+            <ColumnDefinition Width="0.9*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
 
@@ -79,7 +79,8 @@
                    Grid.Row="1"
                    Grid.ColumnSpan="2"
                    Text=""
-                   Style="{StaticResource ErrorUserTextBlock}"></TextBlock>
+                   Style="{StaticResource ErrorUserTextBlock}"
+                   TextWrapping="Wrap"></TextBlock>
         <TextBlock Text="Email"
                    Grid.Row="2"
                    Style="{StaticResource UserTextBlock}"></TextBlock>
@@ -92,7 +93,8 @@
                    Grid.Row="3"
                    Grid.ColumnSpan="2"
                    Text=""
-                   Style="{StaticResource ErrorUserTextBlock}"></TextBlock>
+                   Style="{StaticResource ErrorUserTextBlock}"
+                   TextWrapping="Wrap"></TextBlock>
         <TextBlock Text="Password"
                    Grid.Row="4"
                    Style="{StaticResource UserTextBlock}"></TextBlock>
@@ -106,7 +108,8 @@
                    Grid.Row="5"
                    Grid.ColumnSpan="2"
                    Text="{Binding ResultOperation, Source={StaticResource PhoneBookWindowViewModel}}"
-                   Style="{StaticResource ErrorUserTextBlock}">
+                   Style="{StaticResource ErrorUserTextBlock}"
+                   TextWrapping="Wrap">
         </TextBlock>
         <StackPanel Orientation="Horizontal"
                     Grid.Row="6"

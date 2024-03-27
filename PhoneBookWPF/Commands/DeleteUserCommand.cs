@@ -68,6 +68,7 @@ namespace PhoneBookWPF.Commands
                     App.UsersView.lbUsers.ItemsSource = null;
                     App.UsersView.lbUsers.ItemsSource = users.GetUsers().GetAwaiter().GetResult();
                     App.ActionDeleteUserView.tbErrorEmail.Text = "";
+                    App.ActionDeleteUserView.tbEmail.Text = "";
                     App.ActionDeleteUserView.tbResult.Text = "Пользователь удален!";
                 }
             }

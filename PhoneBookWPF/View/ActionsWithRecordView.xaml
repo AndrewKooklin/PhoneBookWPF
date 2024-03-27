@@ -266,6 +266,10 @@
                         <Binding ElementName="tbPhoneNumber"/>
                         <Binding ElementName="tbAddress"/>
                         <Binding ElementName="tbDescription"/>
+                        <Binding ElementName="tbErrorLastName"/>
+                        <Binding ElementName="tbErrorFirstName"/>
+                        <Binding ElementName="tbErrorFathersName"/>
+                        <Binding ElementName="tbErrorPhoneNumber"/>
                     </MultiBinding>
                 </Button.CommandParameter>
             </Button>

@@ -43,7 +43,7 @@ namespace PhoneBookWPF.HelpMethods
             }
             if (String.IsNullOrEmpty(recordFirstName))
             {
-                recordView.tbErrorLastName.Text = "Заполните поле \"Имя\"";
+                recordView.tbErrorFirstName.Text = "Заполните поле \"Имя\"";
                 return false;
             }
             else if (!String.IsNullOrEmpty(recordFirstName) && recordFirstName.Length < 3)
@@ -57,7 +57,7 @@ namespace PhoneBookWPF.HelpMethods
             }
             if (String.IsNullOrEmpty(recordFathersName))
             {
-                recordView.tbErrorLastName.Text = "Заполните поле \"Отчество\"";
+                recordView.tbErrorFathersName.Text = "Заполните поле \"Отчество\"";
                 return false;
             }
             else if (!String.IsNullOrEmpty(recordFathersName) && recordFathersName.Length < 3)
@@ -71,7 +71,7 @@ namespace PhoneBookWPF.HelpMethods
             }
             if (String.IsNullOrEmpty(recordPhoneNumber))
             {
-                recordView.tbErrorLastName.Text = "Заполните поле \"Телефон\"";
+                recordView.tbErrorPhoneNumber.Text = "Заполните поле \"Телефон\"";
                 return false;
             }
             else if (!String.IsNullOrEmpty(recordPhoneNumber) && recordPhoneNumber.Length < 11)
@@ -143,7 +143,8 @@ namespace PhoneBookWPF.HelpMethods
                 }
                 if(valid == false)
                 {
-                    userView.tbErrorEmail.Text = "Заполните поле \"Email\"";
+                    userView.tbErrorEmail.Text = "Поле \"Email\" формата" +
+                                                 "\nname@site.com";
                     return false;
                 }
                 else

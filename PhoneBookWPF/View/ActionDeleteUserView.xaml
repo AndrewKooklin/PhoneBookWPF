@@ -9,7 +9,7 @@
              xmlns:model="clr-namespace:PhoneBookWPF.Model"
              mc:Ignorable="d" 
              d:DesignHeight="120" 
-             d:DesignWidth="205">
+             d:DesignWidth="300">
 
     <UserControl.Resources>
 

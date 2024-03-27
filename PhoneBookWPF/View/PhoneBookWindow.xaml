@@ -10,8 +10,8 @@
         Title="PhoneBook" 
         Height="420"
         MinHeight="420"
-        Width="630"
-        MinWidth="630"
+        Width="640"
+        MinWidth="640"
         WindowStartupLocation="CenterScreen">
 
     <Window.Resources>
@@ -86,19 +86,19 @@
                           Header="Список пользователей"
                           Cursor="Hand"
                           Command="{Binding UpdateViewCommand, Source={StaticResource PhoneBookWindowViewModel}}" 
-                          CommandParameter="{Binding Header, ElementName=miOpenAccount}">
+                          CommandParameter="{Binding Header, ElementName=miGetUsers}">
                 </MenuItem>
                 <MenuItem x:Name="miAddUser"
                           Header="Добавить пользователя"
                           Cursor="Hand"
                           Command="{Binding UpdateViewCommand, Source={StaticResource PhoneBookWindowViewModel}}" 
-                          CommandParameter="{Binding Header, ElementName=miCloseAccount}">
+                          CommandParameter="{Binding Header, ElementName=miAddUser}">
                 </MenuItem>
                 <MenuItem x:Name="miDeleteUser"
                           Header="Удалить пользователя"
                           Cursor="Hand"
                           Command="{Binding UpdateViewCommand, Source={StaticResource PhoneBookWindowViewModel}}" 
-                          CommandParameter="{Binding Header, ElementName=miCloseAccount}">
+                          CommandParameter="{Binding Header, ElementName=miDeleteUser}">
                 </MenuItem>
                 <MenuItem x:Name="miAddRoleUser"
                           Header="Добавить роль пользователю"

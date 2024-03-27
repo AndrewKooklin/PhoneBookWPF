@@ -33,6 +33,10 @@ namespace PhoneBookWPF.Commands
                 TextBox tbRecordPhoneNumber = (TextBox)fieldElements[4];
                 TextBox tbRecordAddress = (TextBox)fieldElements[5];
                 TextBox tbRecordDescription = (TextBox)fieldElements[6];
+                TextBlock tbErrorRecordLastName = (TextBlock)fieldElements[7];
+                TextBlock tbErrorRecordFirstName = (TextBlock)fieldElements[8];
+                TextBlock tbErrorRecordFathersName = (TextBlock)fieldElements[9];
+                TextBlock tbErrorRecordPhoneNumber = (TextBlock)fieldElements[10];
 
                 tbrecordId.Text = "";
                 tbRecordLastName.Text = "";
@@ -41,6 +45,10 @@ namespace PhoneBookWPF.Commands
                 tbRecordPhoneNumber.Text = "";
                 tbRecordAddress.Text = "";
                 tbRecordDescription.Text = "";
+                tbErrorRecordLastName.Text = "";
+                tbErrorRecordFirstName.Text = "";
+                tbErrorRecordFathersName.Text = "";
+                tbErrorRecordPhoneNumber.Text = "";
 
                 App.ActionsWithRecordView.tbResult.Text = "";
             }

@@ -217,7 +217,6 @@ namespace PhoneBookWPF.ViewModel
             {
                 if (_selectedUser == null)
                 {
-                    App.ActionDeleteUserView.tbResult.Text = "Выберите пользователя";
                     return null;
                 }
                 else

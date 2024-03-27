@@ -65,6 +65,18 @@ namespace PhoneBookWPF.Commands
                         _pbWindowViewModel.RightCurrentView = App.ActionDeleteUserView;
                         break;
                     }
+                case "Добавить роль пользователю":
+                    {
+                        _pbWindowViewModel.LeftCurrentView = App.UsersView;
+                        _pbWindowViewModel.RightCurrentView = App.ActionAddRoleUserView;
+                        break;
+                    }
+                case "Удалить роль у пользователя":
+                    {
+                        _pbWindowViewModel.LeftCurrentView = App.UsersView;
+                        _pbWindowViewModel.RightCurrentView = App.ActionDeleteRoleUserView;
+                        break;
+                    }
                 case "Список ролей":
                     {
                         _pbWindowViewModel.LeftCurrentView = App.RolesView;

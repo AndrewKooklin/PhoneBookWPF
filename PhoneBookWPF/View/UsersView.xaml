@@ -9,7 +9,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" 
              d:DesignWidth="400">
-    
+
     <Grid x:Name="gRecords">
         <Grid.Resources>
             <viewModel:PhoneBookWindowViewModel x:Key="PhoneBookWindowViewModel"/>
@@ -17,34 +17,33 @@
         </Grid.Resources>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
-            <RowDefinition Height="6*"/>
-            <RowDefinition Height="80*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label x:Name="ErrorSelection"
+        <!--<Label x:Name="ErrorSelection"
                    Content="{Binding ErrorSelection, Source={StaticResource PhoneBookWindowViewModel}}"
                    FontSize="17"
                    Foreground="Yellow"
                    Margin="2"
-                   HorizontalAlignment="Left"/>
+                   HorizontalAlignment="Left"/>-->
 
         <StackPanel x:Name="spUsersHeaders"
-                    Grid.Row="1"
+                    Grid.Row="0"
                     Orientation="Horizontal"
                     HorizontalAlignment="Left"
                     Margin="10,5,0,2">
             <Button x:Name="bUserId"
                     Content="UserId" 
-                    Width="150"
+                    Width="100"
                     Margin="0"
                     Background="PaleGreen"/>
             <Button x:Name="bEmail"
                     Content="Email" 
-                    Width="80"
+                    Width="120"
                     Margin="0"
                     Background="PaleGreen"/>
             <Button x:Name="bPasswordHash"
@@ -55,48 +54,65 @@
 
         </StackPanel>
 
-
-        <StackPanel x:Name="spUsersContent" 
-                        Grid.Row="2" 
+        <Grid Grid.Row="1" 
+              Grid.Column="0">
+            <Grid.Resources>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200*"/>
+                <ColumnDefinition Width="0.5*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <ScrollViewer Grid.Column="0"
+                          Margin="0 2 0 0" 
+                          VerticalScrollBarVisibility="Auto" 
+                          HorizontalAlignment="Left"
+                          VerticalAlignment="Top"
+                          Height="370"
+                          Grid.RowSpan="2">
+                <StackPanel x:Name="spUsersContent"
                         Margin="10 0 0 0" 
                         HorizontalAlignment="Left" 
                         VerticalAlignment="Top"
-                        ScrollViewer.VerticalScrollBarVisibility="Auto">
-            <ListBox x:Name="lbUsers"
+                        Height="300">
+                    <ListBox x:Name="lbUsers"
                          ItemsSource="{Binding Users, Source={StaticResource PhoneBookWindowViewModel}}"
                          SelectedItem="{Binding SelectedUser, Source={StaticResource PhoneBookWindowViewModel}, UpdateSourceTrigger=PropertyChanged}"
                          Margin="0" 
                          Background="#FFDFFFCE"
                          FontSize="14">
-                <ListBox.ItemTemplate>
-                    <DataTemplate>
-                        <Border BorderBrush="Black" 
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Border BorderBrush="Black" 
                                     BorderThickness="0 0 0 1" 
                                     Padding="0" 
                                     Margin="0">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock x:Name="tbId" 
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock x:Name="tbId" 
                                                Text="{Binding Id}"
-                                               Width="150"
+                                               Width="95"
                                                Margin="0 0 0 0"
-                                               TextWrapping="WrapWithOverflow"/>
-                                <TextBlock x:Name="tbEmail" 
+                                               TextWrapping="Wrap"/>
+                                        <TextBlock x:Name="tbEmail" 
                                                Text="{Binding Email}"
-                                               Width="80"
+                                               Width="120"
                                                Margin="0 0 0 0"
                                                TextAlignment="Center"/>
-                                <TextBlock x:Name="tbPasswordHash" 
+                                        <TextBlock x:Name="tbPasswordHash" 
                                                Text="{Binding PasswordHash}"
-                                               Width="150"
+                                               Width="138"
                                                Margin="3 0 0 0"
-                                               TextWrapping="WrapWithOverflow"/>
+                                               TextWrapping="Wrap"/>
 
-                            </StackPanel>
-                        </Border>
-                    </DataTemplate>
-                </ListBox.ItemTemplate>
-            </ListBox>
-        </StackPanel>
-
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </UserControl>

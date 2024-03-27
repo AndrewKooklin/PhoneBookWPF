@@ -66,6 +66,7 @@
                         Margin="10 0 0 0" 
                         HorizontalAlignment="Left" 
                         VerticalAlignment="Top"
+                        Height="400"
                         ScrollViewer.VerticalScrollBarVisibility="Auto">
             <ListBox x:Name="lbPhoneBookRecords"
                          ItemsSource="{Binding PhoneBooks, Source={StaticResource PhoneBookWindowViewModel}}"
