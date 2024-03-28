@@ -8,9 +8,125 @@
              xmlns:viewModel="clr-namespace:PhoneBookWPF.ViewModel"
              xmlns:model="clr-namespace:PhoneBookWPF.Model"
              mc:Ignorable="d" 
-             d:DesignHeight="200" 
-             d:DesignWidth="300">
-    <Grid>
-            
+             d:DesignHeight="160" 
+             d:DesignWidth="205">
+    <UserControl.Resources>
+
+        <viewModel:PhoneBookWindowViewModel x:Key="PhoneBookWindowViewModel"/>
+        <model:UserWithRolesModel x:Key="UserWithRolesModel"></model:UserWithRolesModel>
+        <help:MyMultiValueConverter x:Key="MyMultiValueConverter"/>
+
+
+        <Style x:Key="ErrorRoleTextBlock" TargetType="{x:Type TextBlock}">
+            <Setter Property="Margin" Value="50 0 0 0"/>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Height" Value="15"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+            <Setter Property="Foreground" Value="Yellow"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+        <Style x:Key="RoleTextBlockHeader" TargetType="{x:Type TextBlock}">
+            <Setter Property="Padding" Value="0 2 0 0"/>
+            <Setter Property="Margin" Value="0 10 0 0"/>
+            <Setter Property="Width" Value="150"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+        <Style x:Key="RoleTextBlock" TargetType="{x:Type TextBlock}">
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="HorizontalAlignment" Value="Right"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="RoleComboBox" TargetType="{x:Type ComboBox}">
+            <Setter Property="Margin" Value="5 0 0 0"/>
+            <Setter Property="Width" Value="120"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+        <Style x:Key="RoleButton" TargetType="{x:Type Button}">
+            <Setter Property="Margin" Value="5 5 0 0"/>
+            <Setter Property="Width" Value="65"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="FontSize" Value="13"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid x:Name="gRole">
+        <Grid.Resources>
+        </Grid.Resources>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.6*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.8*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Роли пользователя"
+                   Grid.ColumnSpan="2"
+                   Style="{StaticResource RoleTextBlockHeader}"></TextBlock>
+        <TextBox x:Name="tbUserId"
+                 Text="{Binding Id, Source={StaticResource UserWithRolesModel}, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"
+                 Visibility="Collapsed"></TextBox>
+        <TextBlock x:Name="tbErrorRoleName"
+                   Grid.Row="1"
+                   Grid.ColumnSpan="2"
+                   Text=""
+                   Style="{StaticResource ErrorRoleTextBlock}"></TextBlock>
+        <TextBlock Text="Роли"
+                   Grid.Row="2"
+                   Style="{StaticResource RoleTextBlock}"></TextBlock>
+        <ComboBox x:Name="cbRoles"
+                  Grid.Row="2"
+                  Grid.Column="1"
+                  Style="{StaticResource RoleComboBox}"
+                  ItemsSource="{Binding Roles/Name, Source={StaticResource PhoneBookWindowViewModel}}">
+
+        </ComboBox>
+        <TextBlock x:Name="tbResult"
+                   Grid.Row="3"
+                   Grid.ColumnSpan="2"
+                   Text="{Binding ResultOperation, Source={StaticResource PhoneBookWindowViewModel}}"
+                   Style="{StaticResource ErrorRoleTextBlock}">
+        </TextBlock>
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="4"
+                    Grid.ColumnSpan="2"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Margin="50 5 0 0"
+                    Width="140">
+            <Button x:Name="bAddRoleUser"
+                    Content="Добавить"
+                    Style="{StaticResource RoleButton}"
+                    Cursor="Hand"
+                    Command="">
+                <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource MyMultiValueConverter}">
+                        <Binding Path="Text" ElementName="tbUserId"/>
+                        <Binding Path="Text" ElementName="cbRoles"/>
+                    </MultiBinding>
+                </Button.CommandParameter>
+            </Button>
+            <Button x:Name="bDeleteRoleUser"
+                    Content="Удалить"
+                    Style="{StaticResource RoleButton}"
+                    Cursor="Hand"
+                    Command="">
+                <Button.CommandParameter>
+                    <MultiBinding Converter="{StaticResource MyMultiValueConverter}">
+                        <Binding ElementName="tbUserId"/>
+                        <Binding ElementName="cbRoles"/>
+                    </MultiBinding>
+                </Button.CommandParameter>
+            </Button>
+        </StackPanel>
     </Grid>
 </UserControl>

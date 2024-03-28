@@ -1,9 +1,8 @@
 ﻿
 
 FC:\repos\PhoneBookWPFTemp\PhoneBookWPF\MainWindow.xaml;;
-FC:\repos\PhoneBookWPFTemp\PhoneBookWPF\View\ActionAddRoleUserView.xaml;;
-FC:\repos\PhoneBookWPFTemp\PhoneBookWPF\View\ActionDeleteRoleUserView.xaml;;
 FC:\repos\PhoneBookWPFTemp\PhoneBookWPF\View\ActionDeleteUserView.xaml;;
+FC:\repos\PhoneBookWPFTemp\PhoneBookWPF\View\ActionsRoleUserView.xaml;;
 FC:\repos\PhoneBookWPFTemp\PhoneBookWPF\View\ActionsWithRecordView.xaml;;
 FC:\repos\PhoneBookWPFTemp\PhoneBookWPF\View\ActionsWithRoleView.xaml;;
 FC:\repos\PhoneBookWPFTemp\PhoneBookWPF\View\ActionAddUserView.xaml;;

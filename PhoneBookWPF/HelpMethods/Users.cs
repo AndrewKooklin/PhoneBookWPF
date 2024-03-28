@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Newtonsoft.Json;
+using PhoneBookWPF.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,6 +17,7 @@ namespace PhoneBookWPF.HelpMethods
         string urlRequest = "";
         HttpResponseMessage response = new HttpResponseMessage();
         List<IdentityUser> users = null;
+        List<UserWithRolesModel> usersWithRoles = null;
         private readonly MyHttpClient MyHttp = new MyHttpClient();
 
         public async Task<List<IdentityUser>> GetUsers()
@@ -28,6 +30,18 @@ namespace PhoneBookWPF.HelpMethods
                 users = JsonConvert.DeserializeObject<List<IdentityUser>>(apiResponse);
             }
             return users;
+        }
+
+        public async Task<List<UserWithRolesModel>> GetUsersWithRoles()
+        {
+            using (_httpClient = MyHttp.GetHttpClient())
+            {
+                urlRequest = $"{url}" + "UsersAPI/GetUsersWithRoles";
+                response = _httpClient.GetAsync(urlRequest).GetAwaiter().GetResult();
+                string apiResponse = await response.Content.ReadAsStringAsync();
+                usersWithRoles = JsonConvert.DeserializeObject<List<UserWithRolesModel>>(apiResponse);
+            }
+            return usersWithRoles;
         }
     }
 }

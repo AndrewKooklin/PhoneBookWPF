@@ -31,7 +31,7 @@ namespace PhoneBookWPF.ViewModel
             Roles = new List<IdentityRole>();
             PhoneBooks = records.GetRecords().GetAwaiter().GetResult();
             Roles = roles.GetRoles().GetAwaiter().GetResult();
-            Users = users.GetUsers().GetAwaiter().GetResult();
+            UsersWithRoles = users.GetUsersWithRoles().GetAwaiter().GetResult();
             RightCurrentView = new UserControl();
             OpenRegisterWindowCommand = new OpenRegisterWindowCommand();
             OpenLogInWindowCommand = new OpenLogInWindowCommand();
@@ -133,18 +133,18 @@ namespace PhoneBookWPF.ViewModel
             }
         }
 
-        private List<IdentityUser> _users;
+        private List<UserWithRolesModel> _usersWithRoles;
 
-        public List<IdentityUser> Users
+        public List<UserWithRolesModel> UsersWithRoles
         {
             get
             {
-                return _users;
+                return _usersWithRoles;
             }
             set
             {
-                _users = value;
-                OnPropertyChanged(nameof(Users));
+                _usersWithRoles = value;
+                OnPropertyChanged(nameof(UsersWithRoles));
             }
         }
 

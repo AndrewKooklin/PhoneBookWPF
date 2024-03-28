@@ -129,7 +129,5 @@ C:\repos\PhoneBookWPFTemp\PhoneBookWPF\bin\Debug\System.Web.WebPages.Deployment.
 C:\repos\PhoneBookWPFTemp\PhoneBookWPF\bin\Debug\System.Web.WebPages.Razor.xml
 C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\ActionDeleteUserView.baml
 C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\ActionAddUserView.baml
-C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\ActionAddRoleUserView.g.cs
-C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\ActionDeleteRoleUserView.g.cs
-C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\ActionAddRoleUserView.baml
-C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\ActionDeleteRoleUserView.baml
+C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\ActionsRoleUserView.g.cs
+C:\repos\PhoneBookWPFTemp\PhoneBookWPF\obj\Debug\View\ActionsRoleUserView.baml

@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:PhoneBookWPF.View"
              xmlns:viewModel="clr-namespace:PhoneBookWPF.ViewModel"
+             xmlns:model="clr-namespace:PhoneBookWPF.Model"
              xmlns:help="clr-namespace:PhoneBookWPF.HelpMethods"
              mc:Ignorable="d" 
              d:DesignHeight="450" 
@@ -13,6 +14,7 @@
     <Grid x:Name="gRecords">
         <Grid.Resources>
             <viewModel:PhoneBookWindowViewModel x:Key="PhoneBookWindowViewModel"/>
+            <model:UserWithRolesModel x:Key="UserWithRolesModel"/>
             <help:MyMultiValueConverter x:Key="MyMultiValue"/>
         </Grid.Resources>
 
@@ -46,9 +48,9 @@
                     Width="120"
                     Margin="0"
                     Background="PaleGreen"/>
-            <Button x:Name="bPasswordHash"
-                    Content="PasswordHash" 
-                    Width="150"
+            <Button x:Name="bRolesUser"
+                    Content="Roles" 
+                    Width="100"
                     Margin="0"
                     Background="PaleGreen"/>
 
@@ -78,7 +80,7 @@
                         VerticalAlignment="Top"
                         Height="300">
                     <ListBox x:Name="lbUsers"
-                         ItemsSource="{Binding Users, Source={StaticResource PhoneBookWindowViewModel}}"
+                         ItemsSource="{Binding UsersWithRoles, Source={StaticResource PhoneBookWindowViewModel}}"
                          SelectedItem="{Binding SelectedUser, Source={StaticResource PhoneBookWindowViewModel}, UpdateSourceTrigger=PropertyChanged}"
                          Margin="0" 
                          Background="#FFDFFFCE"
@@ -91,20 +93,27 @@
                                     Margin="0">
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock x:Name="tbId" 
-                                               Text="{Binding Id}"
+                                               Text="{Binding User.Id}"
                                                Width="95"
                                                Margin="0 0 0 0"
                                                TextWrapping="Wrap"/>
                                         <TextBlock x:Name="tbEmail" 
-                                               Text="{Binding Email}"
+                                               Text="{Binding User.Email}"
                                                Width="120"
                                                Margin="0 0 0 0"
                                                TextAlignment="Center"/>
-                                        <TextBlock x:Name="tbPasswordHash" 
-                                               Text="{Binding PasswordHash}"
+                                        <ListBox x:Name="lbRolesUser"
+                                                 ItemsSource="{Binding UsersWithRoles/Roles, Source={StaticResource PhoneBookWindowViewModel}}"
+                                                 Margin="0"
+                                                 Width="95"
+                                                 Background="#FFDFFFCE"
+                                                 FontSize="14">
+                                        </ListBox>
+                                        <!--<TextBlock x:Name="tbPasswordHash" 
+                                               Text="{Binding }"
                                                Width="138"
                                                Margin="3 0 0 0"
-                                               TextWrapping="Wrap"/>
+                                               TextWrapping="Wrap"/>-->
 
                                     </StackPanel>
                                 </Border>
