@@ -31,7 +31,7 @@ namespace PhoneBookWPF.ViewModel
             Roles = new List<IdentityRole>();
             PhoneBooks = records.GetRecords().GetAwaiter().GetResult();
             Roles = roles.GetRoles().GetAwaiter().GetResult();
-            Users = users.GetUsers().GetAwaiter().GetResult();
+            Users = users.GetUsersWithRoles().GetAwaiter().GetResult();
             RightCurrentView = new UserControl();
             OpenRegisterWindowCommand = new OpenRegisterWindowCommand();
             OpenLogInWindowCommand = new OpenLogInWindowCommand();
@@ -133,9 +133,9 @@ namespace PhoneBookWPF.ViewModel
             }
         }
 
-        private List<IdentityUser> _users;
+        private List<UserWithRolesModel> _users;
 
-        public List<IdentityUser> Users
+        public List<UserWithRolesModel> Users
         {
             get
             {
@@ -209,9 +209,9 @@ namespace PhoneBookWPF.ViewModel
             }
         }
 
-        private IdentityUser _selectedUser;
+        private UserWithRolesModel _selectedUser;
 
-        public IdentityUser SelectedUser
+        public UserWithRolesModel SelectedUser
         {
             get
             {
@@ -221,18 +221,11 @@ namespace PhoneBookWPF.ViewModel
                 }
                 else
                 {
-                    if(this.RightCurrentView is ActionDeleteUserView)
-                    {
-                        App.ActionDeleteUserView.tbUserId.Text = _selectedUser.Id;
-                        App.ActionDeleteUserView.tbEmail.Text = _selectedUser.Email;
-                        App.ActionDeleteUserView.tbResult.Text = "";
-                    }
-                    else if(this.RightCurrentView is ActionsRoleUserView)
-                    {
-                        App.ActionsRoleUserView.tbUserId.Text = _selectedUser.Id;
+                        App.ActionDeleteUserView.tbUserId.Text = _selectedUser.User.Id;
+                        App.ActionDeleteUserView.tbEmail.Text = _selectedUser.User.Email;
+                        App.ActionsRoleUserView.tbUserId.Text = _selectedUser.User.Id;
                         //App.ActionsRoleUserView.lbRoles.Text = _selectedUser.Roles;
                         App.ActionsRoleUserView.tbResult.Text = "";
-                    }
                 }
 
                 return _selectedUser;

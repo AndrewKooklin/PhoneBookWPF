@@ -33,7 +33,7 @@
                     Margin="10,5,0,2">
             <Button x:Name="bUserId"
                     Content="UserId" 
-                    Width="200"
+                    Width="150"
                     Margin="0"
                     Background="PaleGreen"/>
             <Button x:Name="bEmail"
@@ -41,7 +41,11 @@
                     Width="120"
                     Margin="0"
                     Background="PaleGreen"/>
-
+            <Button x:Name="bRoles"
+                    Content="Roles" 
+                    Width="80"
+                    Margin="0"
+                    Background="PaleGreen"/>
         </StackPanel>
 
         <Grid Grid.Row="1" 
@@ -81,16 +85,23 @@
                                     Margin="0">
                                     <StackPanel Orientation="Horizontal">
                                         <TextBlock x:Name="tbId" 
-                                               Text="{Binding Users/Id, Source={StaticResource PhoneBookViewModel}}"
-                                               Width="200"
+                                               Text="{Binding Path=User.Id}"
+                                               Width="150"
                                                Margin="0 0 0 0"
                                                TextWrapping="Wrap"/>
                                         <TextBlock x:Name="tbEmail" 
-                                               Text="{Binding Users/Email, Source={StaticResource PhoneBookViewModel}}"
-                                               Width="110"
+                                               Text="{Binding Path=User.Email}"
+                                               Width="115"
                                                Margin="0 0 0 0"
                                                TextAlignment="Center"/>
-
+                                        <ListBox x:Name="lbRoles"
+                                                 ItemsSource="{Binding Path=Roles}"
+                                                 Margin="0"
+                                                 Padding="0"
+                                                 Width="70"
+                                                 Background="#FFDFFFCE"
+                                                 FontSize="14">
+                                        </ListBox>
                                     </StackPanel>
                                 </Border>
                             </DataTemplate>

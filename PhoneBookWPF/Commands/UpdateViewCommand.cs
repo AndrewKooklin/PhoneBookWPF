@@ -50,8 +50,8 @@ namespace PhoneBookWPF.Commands
                     }
                 case "Список пользователей":
                     {
-                        App.UsersView.lbUsers.ItemsSource = null;
-                        App.UsersView.lbUsers.ItemsSource = _pbWindowViewModel.Users;
+                        //App.UsersView.lbUsers.ItemsSource = null;
+                        //App.UsersView.lbUsers.ItemsSource = _pbWindowViewModel.Users;
                         _pbWindowViewModel.LeftCurrentView = App.UsersView;
                         break;
                     }
