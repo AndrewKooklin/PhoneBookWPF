@@ -21,7 +21,6 @@ namespace PhoneBookWPF.Commands
         private string urlRequest = "";
         private HttpResponseMessage response = new HttpResponseMessage();
         private bool apiResponseConvert;
-        private UserModel userModel = new UserModel();
         private Users users = new Users();
         private CheckInputFields checkInputFields = new CheckInputFields();
 
