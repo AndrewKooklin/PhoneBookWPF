@@ -209,9 +209,9 @@ namespace PhoneBookWPF.ViewModel
             }
         }
 
-        private IdentityUser _selectedUser;
+        private UserWithRolesModel _selectedUser;
 
-        public IdentityUser SelectedUser
+        public UserWithRolesModel SelectedUser
         {
             get
             {
@@ -221,9 +221,18 @@ namespace PhoneBookWPF.ViewModel
                 }
                 else
                 {
-                    App.ActionDeleteUserView.tbUserId.Text = _selectedUser.Id;
-                    App.ActionDeleteUserView.tbEmail.Text = _selectedUser.Email;
-                    App.ActionDeleteUserView.tbResult.Text = "";
+                    if(this.RightCurrentView is ActionDeleteUserView)
+                    {
+                        App.ActionDeleteUserView.tbUserId.Text = _selectedUser.User.Id;
+                        App.ActionDeleteUserView.tbEmail.Text = _selectedUser.User.Email;
+                        App.ActionDeleteUserView.tbResult.Text = "";
+                    }
+                    else if(this.RightCurrentView is ActionsRoleUserView)
+                    {
+                        App.ActionsRoleUserView.tbUserId.Text = _selectedUser.User.Id;
+                        App.ActionDeleteUserView.tbEmail.Text = _selectedUser.User.Email;
+                        App.ActionDeleteUserView.tbResult.Text = "";
+                    }
                 }
 
                 return _selectedUser;

@@ -149,18 +149,16 @@
     <Compile Include="Model\RegisterModel.cs" />
     <Compile Include="Model\RoleModel.cs" />
     <Compile Include="Model\UserModel.cs" />
+    <Compile Include="Model\UserWithRolesModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\PhoneBookWindowViewModel.cs" />
     <Compile Include="ViewModel\RegistrationWindowViewModel.cs" />
-    <Compile Include="View\ActionAddRoleUserView.xaml.cs">
-      <DependentUpon>ActionAddRoleUserView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\ActionDeleteRoleUserView.xaml.cs">
-      <DependentUpon>ActionDeleteRoleUserView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\ActionDeleteUserView.xaml.cs">
       <DependentUpon>ActionDeleteUserView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ActionsRoleUserView.xaml.cs">
+      <DependentUpon>ActionsRoleUserView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ActionsWithRecordView.xaml.cs">
       <DependentUpon>ActionsWithRecordView.xaml</DependentUpon>
@@ -198,15 +196,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\ActionAddRoleUserView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\ActionDeleteRoleUserView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\ActionDeleteUserView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ActionsRoleUserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
