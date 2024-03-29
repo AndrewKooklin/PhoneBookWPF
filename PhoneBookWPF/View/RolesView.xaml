@@ -8,7 +8,9 @@
              xmlns:help="clr-namespace:PhoneBookWPF.HelpMethods"
              mc:Ignorable="d" 
              d:DesignHeight="450" 
-             d:DesignWidth="400">
+             d:DesignWidth="400"
+             Margin="0 10 0 0">
+    
     <Grid x:Name="gRoles">
         <Grid.Resources>
             <viewModel:PhoneBookWindowViewModel x:Key="PhoneBookWindowViewModel"/>

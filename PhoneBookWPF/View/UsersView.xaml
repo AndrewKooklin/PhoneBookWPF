@@ -8,10 +8,14 @@
              xmlns:model="clr-namespace:PhoneBookWPF.Model"
              xmlns:help="clr-namespace:PhoneBookWPF.HelpMethods"
              mc:Ignorable="d" 
-             d:DesignHeight="450" 
-             d:DesignWidth="400">
+             d:DesignHeight="400" 
+             d:DesignWidth="400"
+             Margin="0 10 0 0">
 
-    <Grid x:Name="gRecords">
+    <Grid x:Name="gRecords"
+          MaxHeight="400"
+          MaxWidth="400"
+          HorizontalAlignment="Stretch">
         <Grid.Resources>
             <viewModel:PhoneBookWindowViewModel x:Key="PhoneBookViewModel"/>
             <model:UserModel x:Key="UserModel"/>

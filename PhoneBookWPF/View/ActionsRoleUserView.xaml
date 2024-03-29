@@ -8,8 +8,10 @@
              xmlns:viewModel="clr-namespace:PhoneBookWPF.ViewModel"
              xmlns:model="clr-namespace:PhoneBookWPF.Model"
              mc:Ignorable="d" 
-             d:DesignHeight="200" 
-             d:DesignWidth="205">
+             d:DesignHeight="240" 
+             d:DesignWidth="200"
+             VerticalAlignment="Top"
+             Margin="0 10 0 0">
     <UserControl.Resources>
 
         <viewModel:PhoneBookWindowViewModel x:Key="PhoneBookWindowViewModel"/>
@@ -19,7 +21,7 @@
 
         <Style x:Key="ErrorRoleTextBlock" TargetType="{x:Type TextBlock}">
             <Setter Property="Margin" Value="50 0 0 0"/>
-            <Setter Property="Width" Value="150"/>
+            <Setter Property="Width" Value="140"/>
             <Setter Property="Height" Value="15"/>
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="FontWeight" Value="Bold"/>
@@ -28,13 +30,15 @@
         </Style>
         <Style x:Key="RoleTextBlockHeader" TargetType="{x:Type TextBlock}">
             <Setter Property="Padding" Value="0 2 0 0"/>
-            <Setter Property="Margin" Value="0 0 0 0"/>
+            <Setter Property="Margin" Value="0 5 0 0"/>
             <Setter Property="Width" Value="150"/>
+            <Setter Property="Height" Value="40"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontWeight" Value="Bold"/>
         </Style>
         <Style x:Key="RoleTextBlock" TargetType="{x:Type TextBlock}">
             <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Height" Value="20"/>
             <Setter Property="HorizontalAlignment" Value="Right"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
@@ -50,21 +54,26 @@
             <Setter Property="Width" Value="65"/>
             <Setter Property="Height" Value="25"/>
             <Setter Property="FontSize" Value="13"/>
+            <Setter Property="BorderBrush" Value="Green"/>
+            <Setter Property="BorderThickness" Value="2"/>
         </Style>
     </UserControl.Resources>
 
-    <Grid x:Name="gRole">
+    <Grid x:Name="gRole"
+          MaxHeight="240"
+          MaxWidth="200"
+          VerticalAlignment="Top">
         <Grid.Resources>
         </Grid.Resources>
 
         <Grid.RowDefinitions>
+            <RowDefinition Height="0.4*"/>
+            <RowDefinition Height="0.4*"/>
             <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.2*"/>
             <RowDefinition Height="0.3*"/>
-            <RowDefinition Height="0.3*"/>
-            <RowDefinition Height="0.3*"/>
-            <RowDefinition Height="0.3*"/>
-            <RowDefinition Height="0.3*"/>
-            <RowDefinition Height="0.6*"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.4*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0.8*"/>
@@ -83,30 +92,46 @@
                    Style="{StaticResource RoleTextBlock}"></TextBlock>
         <Border Grid.Row="1"
                 Grid.Column="1"
-                Background="Blue"
-                Width="1"
-                BorderThickness="1">
+                Width="120"
+                Height="25"
+                BorderBrush="Blue"
+                BorderThickness="1"
+                Background="Aqua"
+                HorizontalAlignment="Left"
+                Margin="5 0 0 0">
             <TextBlock x:Name="tbUserEmail"
                    Text="{Binding User.Email, Source={StaticResource UserWithRolesModel}}"
                    Grid.Row="1"
                    Grid.Column="1"
                    HorizontalAlignment="Left"
-                   Width="120"></TextBlock>
+                   Width="120"
+                   Padding="2 0 0 2"
+                   Height="25"
+                   FontSize="15"></TextBlock>
         </Border>
         <TextBlock x:Name="tbRoles"
-                   Text="Роли"
+                   Text="Roles user"
                    Grid.Row="2"
-                   Style="{StaticResource RoleTextBlock}"></TextBlock>
+                   Style="{StaticResource RoleTextBlock}"
+                   TextWrapping="Wrap"></TextBlock>
         <Border Grid.Row="2"
                 Grid.Column="1"
+                Width="120"
+                Height="30"
                 BorderBrush="Blue"
-                BorderThickness="1">
-            <TextBlock x:Name="tbRolesUser"
-                   Text="{Binding Roles, Source={StaticResource UserWithRolesModel}}"
+                BorderThickness="1"
+                Background="Aqua"
+                HorizontalAlignment="Left"
+                Margin="5 2 0 0">
+            <TextBlock x:Name="tbUserRoles"
+                   Text=""
                    Grid.Row="2"
                    Grid.Column="1"
                    Width="120"
-                   HorizontalAlignment="Left">
+                   Height="25"
+                   HorizontalAlignment="Left"
+                   Padding="2 0 0 2"
+                   FontSize="15">
             </TextBlock>
         </Border>
         <TextBlock x:Name="tbErrorRoleName"

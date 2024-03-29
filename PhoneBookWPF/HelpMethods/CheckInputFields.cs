@@ -150,7 +150,7 @@ namespace PhoneBookWPF.HelpMethods
                 else
                 {
                     userView.tbErrorEmail.Text = "";
-                    return true;
+                    //return true;
                 }
             }
             if (String.IsNullOrEmpty(userPassword))
@@ -158,9 +158,9 @@ namespace PhoneBookWPF.HelpMethods
                 userView.tbErrorPassword.Text = "Заполните поле \"Password\"";
                 return false;
             }
-            else if (!String.IsNullOrEmpty(userPassword) && userPassword.Length < 3)
+            if (!String.IsNullOrEmpty(userPassword) && userPassword.Length < 6)
             {
-                userView.tbErrorPassword.Text = "Длина не менее 3 символов";
+                userView.tbErrorPassword.Text = "Длина не менее 6 символов";
                 return false;
             }
             else

@@ -7,17 +7,21 @@
              xmlns:viewModel="clr-namespace:PhoneBookWPF.ViewModel"
              xmlns:help="clr-namespace:PhoneBookWPF.HelpMethods"
              mc:Ignorable="d" 
-             d:DesignHeight="450" 
-             d:DesignWidth="400">
+             d:DesignHeight="400" 
+             d:DesignWidth="400"
+             Margin="0 10 0 0">
     
-    <Grid x:Name="gRecords">
+    <Grid x:Name="gRecords"
+          MaxHeight="400"
+          MaxWidth="400"
+          HorizontalAlignment="Left">
         <Grid.Resources>
             <viewModel:PhoneBookWindowViewModel x:Key="PhoneBookWindowViewModel"/>
             <help:MyMultiValueConverter x:Key="MyMultiValue"/>
         </Grid.Resources>
 
         <Grid.RowDefinitions>
-            <RowDefinition Height="3*"/>
+            <!--<RowDefinition Height="3*"/>-->
             <RowDefinition Height="6*"/>
             <RowDefinition Height="80*"/>
         </Grid.RowDefinitions>
@@ -25,15 +29,15 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <Label x:Name="ErrorSelection"
+        <!--<Label x:Name="ErrorSelection"
                    Content="{Binding ErrorSelection, Source={StaticResource PhoneBookWindowViewModel}}"
                    FontSize="17"
                    Foreground="Yellow"
                    Margin="2"
-                   HorizontalAlignment="Left"/>
+                   HorizontalAlignment="Left"/>-->
 
         <StackPanel x:Name="spRecordsHeaders"
-                    Grid.Row="1"
+                    Grid.Row="0"
                     Orientation="Horizontal"
                     HorizontalAlignment="Left"
                     Margin="10,5,0,2">
@@ -62,7 +66,7 @@
 
 
         <StackPanel x:Name="spRecordsContent" 
-                        Grid.Row="2" 
+                        Grid.Row="1" 
                         Margin="10 0 0 0" 
                         HorizontalAlignment="Left" 
                         VerticalAlignment="Top"

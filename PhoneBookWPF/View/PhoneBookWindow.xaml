@@ -8,8 +8,8 @@
         xmlns:help="clr-namespace:PhoneBookWPF.HelpMethods"
         mc:Ignorable="d"
         Title="PhoneBook" 
-        Height="420"
-        MinHeight="420"
+        Height="460"
+        MinHeight="460"
         Width="640"
         MinWidth="640"
         WindowStartupLocation="CenterScreen">
@@ -29,8 +29,8 @@
             <RowDefinition Height="132*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="400*" MinWidth="400"></ColumnDefinition>
-            <ColumnDefinition Width="202*" MinWidth="202"></ColumnDefinition>
+            <ColumnDefinition Width="410*" MinWidth="410"></ColumnDefinition>
+            <ColumnDefinition Width="210*" MinWidth="210"></ColumnDefinition>
         </Grid.ColumnDefinitions>
 
         <Menu x:Name="mTopLeft"

@@ -221,11 +221,17 @@ namespace PhoneBookWPF.ViewModel
                 }
                 else
                 {
-                        App.ActionDeleteUserView.tbUserId.Text = _selectedUser.User.Id;
-                        App.ActionDeleteUserView.tbEmail.Text = _selectedUser.User.Email;
-                        App.ActionsRoleUserView.tbUserId.Text = _selectedUser.User.Id;
-                        //App.ActionsRoleUserView.lbRoles.Text = _selectedUser.Roles;
-                        App.ActionsRoleUserView.tbResult.Text = "";
+                    App.ActionDeleteUserView.tbUserId.Text = _selectedUser.User.Id;
+                    App.ActionDeleteUserView.tbEmail.Text = _selectedUser.User.Email;
+                    App.ActionsRoleUserView.tbUserId.Text = _selectedUser.User.Id;
+                    App.ActionsRoleUserView.tbUserEmail.Text = _selectedUser.User.Email;
+                    StringBuilder stringBuilder = new StringBuilder();
+                    foreach(var str in _selectedUser.Roles)
+                    {
+                        stringBuilder.Append($"{str}\n");
+                    }
+                    App.ActionsRoleUserView.tbUserRoles.Text = stringBuilder.ToString();
+                    App.ActionsRoleUserView.tbResult.Text = "";
                 }
 
                 return _selectedUser;
