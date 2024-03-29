@@ -124,6 +124,7 @@
     </ApplicationDefinition>
     <Compile Include="Commands\AddRecordCommand.cs" />
     <Compile Include="Commands\AddRoleCommand.cs" />
+    <Compile Include="Commands\AddRoleUserCommand.cs" />
     <Compile Include="Commands\AddUserCommand.cs" />
     <Compile Include="Commands\ChangeRecordCommand.cs" />
     <Compile Include="Commands\ClearTextCommand.cs" />
@@ -148,6 +149,7 @@
     <Compile Include="Model\PhoneBookRecord.cs" />
     <Compile Include="Model\RegisterModel.cs" />
     <Compile Include="Model\RoleModel.cs" />
+    <Compile Include="Model\RoleUserModel.cs" />
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="Model\UserWithRolesModel.cs" />
     <Compile Include="ViewModel\BaseViewModel.cs" />

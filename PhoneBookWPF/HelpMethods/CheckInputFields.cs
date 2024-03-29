@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace PhoneBookWPF.HelpMethods
 {
@@ -179,7 +180,7 @@ namespace PhoneBookWPF.HelpMethods
 
             if (String.IsNullOrEmpty(userId))
             {
-                userView.tbResult.Text = "Выберите пользователя";
+                userView.tbResult.Text = "Выберите пользователя !";
                 return false;
             }
             if (String.IsNullOrEmpty(userEmail))
@@ -214,6 +215,29 @@ namespace PhoneBookWPF.HelpMethods
             {
                 userView.tbErrorEmail.Text = "";
                 userView.tbResult.Text = "";
+                return true;
+            }
+        }
+
+        public bool CheckFieldsAddRoleUser(ActionsRoleUserView userView, object fields)
+        {
+            var fieldElements = (object[])fields;
+            string userId = fieldElements[0].ToString();
+            ComboBox cbRole = (ComboBox)fieldElements[1];
+            string roleName = cbRole.SelectedItem.ToString();
+
+            if (String.IsNullOrEmpty(userId))
+            {
+                userView.tbResult.Text = "Выберите пользователя!";
+                return false;
+            }
+            if (String.IsNullOrEmpty(roleName))
+            {
+                userView.tbResult.Text = "Выберите роль!";
+                return false;
+            }
+            else
+            {
                 return true;
             }
         }

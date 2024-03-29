@@ -72,7 +72,7 @@ namespace PhoneBookWPF.Commands
                 else
                 {
                     App.UsersView.lbUsers.ItemsSource = null;
-                    App.UsersView.lbUsers.ItemsSource = users.GetUsers().GetAwaiter().GetResult();
+                    App.UsersView.lbUsers.ItemsSource = users.GetUsersWithRoles().GetAwaiter().GetResult();
                     App.ActionAddUserView.tbErrorEmail.Text = "";
                     App.ActionAddUserView.tbErrorPassword.Text = "";
                     App.ActionAddUserView.tbResult.Text = "Пользователь добавлен!";

@@ -44,6 +44,7 @@ namespace PhoneBookWPF.ViewModel
             DeleteRoleCommand = new DeleteRoleCommand();
             AddUserCommand = new AddUserCommand();
             DeleteUserCommand = new DeleteUserCommand();
+            AddRoleUserCommand = new AddRoleUserCommand();
         }
 
         public ICommand UpdateViewCommand { get; set; }
@@ -71,6 +72,10 @@ namespace PhoneBookWPF.ViewModel
         public ICommand AddUserCommand { get; set; }
 
         public ICommand DeleteUserCommand { get; set; }
+
+        public ICommand AddRoleUserCommand { get; set; }
+
+        public ICommand DeleteRoleUserCommand { get; set; }
 
 
         private UserControl _leftCurrentView;
