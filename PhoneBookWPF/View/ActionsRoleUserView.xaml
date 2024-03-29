@@ -176,7 +176,7 @@
                     Content="Добавить"
                     Style="{StaticResource RoleButton}"
                     Cursor="Hand"
-                    Command="">
+                    Command="{Binding AddRoleUserCommand, Source={StaticResource PhoneBookWindowViewModel}}">
                 <Button.CommandParameter>
                     <MultiBinding Converter="{StaticResource MyMultiValueConverter}">
                         <Binding Path="Text" ElementName="tbUserId"/>
@@ -188,7 +188,7 @@
                     Content="Удалить"
                     Style="{StaticResource RoleButton}"
                     Cursor="Hand"
-                    Command="{Binding AddRoleUserCommand, Source={StaticResource PhoneBookWindowViewModel}}">
+                    Command="">
                 <Button.CommandParameter>
                     <MultiBinding Converter="{StaticResource MyMultiValueConverter}">
                         <Binding ElementName="tbUserId"/>
