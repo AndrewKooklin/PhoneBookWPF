@@ -8,7 +8,7 @@
              xmlns:viewModel="clr-namespace:PhoneBookWPF.ViewModel"
              xmlns:model="clr-namespace:PhoneBookWPF.Model"
              mc:Ignorable="d" 
-             d:DesignHeight="160" 
+             d:DesignHeight="200" 
              d:DesignWidth="205">
     <UserControl.Resources>
 
@@ -19,7 +19,7 @@
 
         <Style x:Key="ErrorRoleTextBlock" TargetType="{x:Type TextBlock}">
             <Setter Property="Margin" Value="50 0 0 0"/>
-            <Setter Property="Width" Value="200"/>
+            <Setter Property="Width" Value="150"/>
             <Setter Property="Height" Value="15"/>
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="FontWeight" Value="Bold"/>
@@ -28,7 +28,7 @@
         </Style>
         <Style x:Key="RoleTextBlockHeader" TargetType="{x:Type TextBlock}">
             <Setter Property="Padding" Value="0 2 0 0"/>
-            <Setter Property="Margin" Value="0 10 0 0"/>
+            <Setter Property="Margin" Value="0 0 0 0"/>
             <Setter Property="Width" Value="150"/>
             <Setter Property="FontSize" Value="16"/>
             <Setter Property="FontWeight" Value="Bold"/>
@@ -59,7 +59,9 @@
 
         <Grid.RowDefinitions>
             <RowDefinition Height="0.3*"/>
-            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
+            <RowDefinition Height="0.3*"/>
             <RowDefinition Height="0.3*"/>
             <RowDefinition Height="0.3*"/>
             <RowDefinition Height="0.6*"/>
@@ -75,16 +77,48 @@
         <TextBox x:Name="tbUserId"
                  Text="{Binding Id, Source={StaticResource UserWithRolesModel}, UpdateSourceTrigger=PropertyChanged, Mode=OneWayToSource}"
                  Visibility="Collapsed"></TextBox>
-        <TextBlock x:Name="tbErrorRoleName"
+        <TextBlock x:Name="tbEmail"
+                   Text="Email"
                    Grid.Row="1"
+                   Style="{StaticResource RoleTextBlock}"></TextBlock>
+        <Border Grid.Row="1"
+                Grid.Column="1"
+                Background="Blue"
+                Width="1"
+                BorderThickness="1">
+            <TextBlock x:Name="tbUserEmail"
+                   Text="{Binding User.Email, Source={StaticResource UserWithRolesModel}}"
+                   Grid.Row="1"
+                   Grid.Column="1"
+                   HorizontalAlignment="Left"
+                   Width="120"></TextBlock>
+        </Border>
+        <TextBlock x:Name="tbRoles"
+                   Text="Роли"
+                   Grid.Row="2"
+                   Style="{StaticResource RoleTextBlock}"></TextBlock>
+        <Border Grid.Row="2"
+                Grid.Column="1"
+                BorderBrush="Blue"
+                BorderThickness="1">
+            <TextBlock x:Name="tbRolesUser"
+                   Text="{Binding Roles, Source={StaticResource UserWithRolesModel}}"
+                   Grid.Row="2"
+                   Grid.Column="1"
+                   Width="120"
+                   HorizontalAlignment="Left">
+            </TextBlock>
+        </Border>
+        <TextBlock x:Name="tbErrorRoleName"
+                   Grid.Row="3"
                    Grid.ColumnSpan="2"
                    Text=""
                    Style="{StaticResource ErrorRoleTextBlock}"></TextBlock>
         <TextBlock Text="Роли"
-                   Grid.Row="2"
+                   Grid.Row="4"
                    Style="{StaticResource RoleTextBlock}"></TextBlock>
         <ComboBox x:Name="cbRoles"
-                  Grid.Row="2"
+                  Grid.Row="4"
                   Grid.Column="1"
                   Style="{StaticResource RoleComboBox}"
                   ItemsSource="{Binding Roles, Source={StaticResource PhoneBookWindowViewModel}}">
@@ -101,13 +135,13 @@
             </ComboBox.ItemTemplate>
         </ComboBox>
         <TextBlock x:Name="tbResult"
-                   Grid.Row="3"
+                   Grid.Row="5"
                    Grid.ColumnSpan="2"
                    Text="{Binding ResultOperation, Source={StaticResource PhoneBookWindowViewModel}}"
                    Style="{StaticResource ErrorRoleTextBlock}">
         </TextBlock>
         <StackPanel Orientation="Horizontal"
-                    Grid.Row="4"
+                    Grid.Row="6"
                     Grid.ColumnSpan="2"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
