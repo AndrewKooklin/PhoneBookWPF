@@ -20,8 +20,8 @@
 
 
         <Style x:Key="ErrorRoleTextBlock" TargetType="{x:Type TextBlock}">
-            <Setter Property="Margin" Value="50 0 0 0"/>
-            <Setter Property="Width" Value="140"/>
+            <Setter Property="Margin" Value="40 0 0 0"/>
+            <Setter Property="Width" Value="150"/>
             <Setter Property="Height" Value="15"/>
             <Setter Property="FontSize" Value="12"/>
             <Setter Property="FontWeight" Value="Bold"/>
@@ -188,10 +188,10 @@
                     Content="Удалить"
                     Style="{StaticResource RoleButton}"
                     Cursor="Hand"
-                    Command="">
+                    Command="{Binding DeleteRoleUserCommand, Source={StaticResource PhoneBookWindowViewModel}}">
                 <Button.CommandParameter>
                     <MultiBinding Converter="{StaticResource MyMultiValueConverter}">
-                        <Binding ElementName="tbUserId"/>
+                        <Binding Path="Text" ElementName="tbUserId"/>
                         <Binding ElementName="cbRoles"/>
                     </MultiBinding>
                 </Button.CommandParameter>

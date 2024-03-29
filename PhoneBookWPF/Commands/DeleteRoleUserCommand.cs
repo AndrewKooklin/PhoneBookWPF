@@ -15,7 +15,7 @@ using System.Windows.Input;
 
 namespace PhoneBookWPF.Commands
 {
-    public class AddRoleUserCommand : ICommand
+    public class DeleteRoleUserCommand : ICommand
     {
         public event EventHandler CanExecuteChanged;
         private HttpClient _httpClient { get; set; }
@@ -23,6 +23,8 @@ namespace PhoneBookWPF.Commands
         private string urlRequest = "";
         private HttpResponseMessage response = new HttpResponseMessage();
         private bool apiResponseConvert;
+        private string apiResponse;
+        private bool apiResponseBoolean;
         private Users users = new Users();
         private UserWithRolesModel userWithRoles;
         private RoleUserModel userModel;
@@ -67,9 +69,9 @@ namespace PhoneBookWPF.Commands
                     App.ActionsRoleUserView.tbResult.Text = "Такого пользователя нет!";
                     return;
                 }
-                else if (userWithRoles.Roles.Contains(roleName))
+                else if (!userWithRoles.Roles.Contains(roleName))
                 {
-                    App.ActionsRoleUserView.tbResult.Text = "Уже есть такая роль!";
+                    App.ActionsRoleUserView.tbResult.Text = "Нет такой роли!";
                     return;
                 }
                 else
@@ -79,19 +81,19 @@ namespace PhoneBookWPF.Commands
                         UserId = userId,
                         Role = roleName
                     };
-                    urlRequest = $"{url}" + "UsersAPI/AddRoleToUser/" + $"{userModel}";
+                    urlRequest = $"{url}" + "UsersAPI/DeleteRoleUser/" + $"{userModel}/";
                     using (_httpClient = new HttpClient())
                     {
                         _httpClient.DefaultRequestHeaders.Accept.Clear();
                         _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
                         using (response = await _httpClient.PostAsJsonAsync(urlRequest, userModel))
                         {
-                            string apiResponse = await response.Content.ReadAsStringAsync();
-                            apiResponseConvert = JsonConvert.DeserializeObject<bool>(apiResponse);
+                            apiResponse = await response.Content.ReadAsStringAsync();
+                            apiResponseBoolean = JsonConvert.DeserializeObject<bool>(apiResponse);
                         }
                     }
 
-                    if (!apiResponseConvert)
+                    if (!apiResponseBoolean)
                     {
                         App.ActionAddUserView.tbResult.Text = "Ошибка сервера!";
                         return;
@@ -100,7 +102,7 @@ namespace PhoneBookWPF.Commands
                     {
                         App.UsersView.lbUsers.ItemsSource = null;
                         App.UsersView.lbUsers.ItemsSource = users.GetUsersWithRoles().GetAwaiter().GetResult();
-                        App.ActionsRoleUserView.tbResult.Text = "Роль добавлена!";
+                        App.ActionsRoleUserView.tbResult.Text = "Роль удалена!";
                     }
                 }
             }

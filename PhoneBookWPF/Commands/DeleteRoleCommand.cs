@@ -79,6 +79,8 @@ namespace PhoneBookWPF.Commands
                 {
                     App.RolesView.lbRoles.ItemsSource = null;
                     App.RolesView.lbRoles.ItemsSource = roles.GetRoles().GetAwaiter().GetResult();
+                    App.ActionsRoleUserView.cbRoles.ItemsSource = null;
+                    App.ActionsRoleUserView.cbRoles.ItemsSource = roles.GetRoles().GetAwaiter().GetResult();
                     App.ActionsWithRoleView.tbResult.Text = "Роль удалена!";
                 }
             }

@@ -45,6 +45,7 @@ namespace PhoneBookWPF.ViewModel
             AddUserCommand = new AddUserCommand();
             DeleteUserCommand = new DeleteUserCommand();
             AddRoleUserCommand = new AddRoleUserCommand();
+            DeleteRoleUserCommand = new DeleteRoleUserCommand();
         }
 
         public ICommand UpdateViewCommand { get; set; }
@@ -233,7 +234,7 @@ namespace PhoneBookWPF.ViewModel
                     StringBuilder stringBuilder = new StringBuilder();
                     foreach(var str in _selectedUser.Roles)
                     {
-                        stringBuilder.Append($"{str}\n");
+                        stringBuilder.Append($"{str} ");
                     }
                     App.ActionsRoleUserView.tbUserRoles.Text = stringBuilder.ToString();
                     App.ActionsRoleUserView.tbResult.Text = "";

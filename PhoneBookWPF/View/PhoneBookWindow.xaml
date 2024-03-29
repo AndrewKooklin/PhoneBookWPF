@@ -22,6 +22,13 @@
     <Grid>
 
         <Grid.Resources>
+
+            <Style x:Key="TextBlockStyle" TargetType="{x:Type TextBlock}">
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="Margin" Value="0"/>
+                <Setter Property="Background" Value="Transparent"/>
+            </Style>
+
         </Grid.Resources>
 
         <Grid.RowDefinitions>
@@ -165,8 +172,8 @@
             <MenuItem x:Name="miUserName"
                    Visibility="Collapsed"
                    Header=""
-                   Foreground="Black"
-                   IsEnabled="False"
+                   Foreground="Coral"
+                   Cursor="Arrow"
                    Margin="0 0 2 0">
             </MenuItem>
             <MenuItem x:Name="miLogOut"

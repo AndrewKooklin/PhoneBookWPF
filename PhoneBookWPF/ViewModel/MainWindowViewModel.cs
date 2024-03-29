@@ -182,35 +182,6 @@ namespace PhoneBookWPF.ViewModel
                 Password = passwordValue
             };
 
-            //urlRequest = $"{url}" + "Login/CheckUserToDB/" + $"{model}";
-
-            //using (var client = MyHttp.GetHttpClient())
-            //{
-            //    using (response = client.PostAsJsonAsync(urlRequest, model).GetAwaiter().GetResult())
-            //    {
-            //        string apiResponse = await response.Content.ReadAsStringAsync();
-            //        userExist = JsonConvert.DeserializeObject<bool>(apiResponse);
-            //    }
-            //}
-
-            //if (!userExist)
-            //{
-            //    CheckUserLabelContent = "Пользователь не найден, проверьте" +
-            //                            "\nимя и пароль или зарегистрируйтесь !";
-            //    return;
-            //}
-
-            //urlRequest = $"{url}" + "Login/GetUserFromDB/";
-
-            //using (var client = MyHttp.GetHttpClient())
-            //{
-            //    using (response = await client.PostAsJsonAsync(urlRequest, model))
-            //    {
-            //        string apiResponse = await response.Content.ReadAsStringAsync();
-            //        user = JsonConvert.DeserializeObject<IdentityUser>(apiResponse);
-            //    }
-            //}
-
             urlRequest = $"{url}" + "Login/GetUserRoles/" + $"{model}";
 
             using (var client = MyHttp.GetHttpClient())

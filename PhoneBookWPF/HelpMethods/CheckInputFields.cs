@@ -224,14 +224,14 @@ namespace PhoneBookWPF.HelpMethods
             var fieldElements = (object[])fields;
             string userId = fieldElements[0].ToString();
             ComboBox cbRole = (ComboBox)fieldElements[1];
-            string roleName = cbRole.SelectedItem.ToString();
+            
 
             if (String.IsNullOrEmpty(userId))
             {
                 userView.tbResult.Text = "Выберите пользователя!";
                 return false;
             }
-            if (String.IsNullOrEmpty(roleName))
+            if (cbRole.SelectedItem == null)
             {
                 userView.tbResult.Text = "Выберите роль!";
                 return false;

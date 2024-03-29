@@ -130,6 +130,7 @@
     <Compile Include="Commands\ClearTextCommand.cs" />
     <Compile Include="Commands\DeleteRecordCommand.cs" />
     <Compile Include="Commands\DeleteRoleCommand.cs" />
+    <Compile Include="Commands\DeleteRoleUserCommand.cs" />
     <Compile Include="Commands\DeleteUserCommand.cs" />
     <Compile Include="Commands\LogOutCommand.cs" />
     <Compile Include="Commands\OpenLogInWindowCommand.cs" />
