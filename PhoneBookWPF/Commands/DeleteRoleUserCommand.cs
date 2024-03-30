@@ -3,13 +3,9 @@ using Newtonsoft.Json;
 using PhoneBookWPF.HelpMethods;
 using PhoneBookWPF.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -22,7 +18,6 @@ namespace PhoneBookWPF.Commands
         private string url = @"https://localhost:44379/api/";
         private string urlRequest = "";
         private HttpResponseMessage response = new HttpResponseMessage();
-        private bool apiResponseConvert;
         private string apiResponse;
         private bool apiResponseBoolean;
         private Users users = new Users();

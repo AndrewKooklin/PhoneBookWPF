@@ -1,13 +1,9 @@
 ﻿using Newtonsoft.Json;
 using PhoneBookWPF.HelpMethods;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -45,7 +41,6 @@ namespace PhoneBookWPF.Commands
                 var fieldElements = (object[])parameter;
                 TextBox tbRoleId = (TextBox)fieldElements[0];
                 string roleId = tbRoleId.Text;
-                //TextBox tbRoleName = (TextBox)fieldElements[1];
 
                 if (String.IsNullOrEmpty(roleId))
                 {

@@ -37,7 +37,7 @@ namespace PhoneBookWPF.ViewModel
             OpenLogInWindowCommand = new OpenLogInWindowCommand();
             LogOutCommand = new LogOutCommand();
             AddRecordCommand = new AddRecordCommand();
-            DeleteRecordCommand = new DeleteRecordCommand(this);
+            DeleteRecordCommand = new DeleteRecordCommand();
             ChangeRecordCommand = new ChangeRecordCommand();
             ClearTextCommand = new ClearTextCommand();
             AddRoleCommand = new AddRoleCommand();
