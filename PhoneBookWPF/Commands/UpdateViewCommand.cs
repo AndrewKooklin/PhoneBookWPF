@@ -1,11 +1,5 @@
-﻿using PhoneBookWPF.View;
-using PhoneBookWPF.ViewModel;
+﻿using PhoneBookWPF.ViewModel;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Controls;
 using System.Windows.Input;
 
 namespace PhoneBookWPF.Commands
@@ -50,8 +44,6 @@ namespace PhoneBookWPF.Commands
                     }
                 case "Список пользователей":
                     {
-                        //App.UsersView.lbUsers.ItemsSource = null;
-                        //App.UsersView.lbUsers.ItemsSource = _pbWindowViewModel.Users;
                         _pbWindowViewModel.LeftCurrentView = App.UsersView;
                         break;
                     }

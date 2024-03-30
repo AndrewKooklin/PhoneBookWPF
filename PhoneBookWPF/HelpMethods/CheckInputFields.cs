@@ -1,10 +1,6 @@
 ﻿using PhoneBookWPF.View;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 
 namespace PhoneBookWPF.HelpMethods
@@ -21,12 +17,6 @@ namespace PhoneBookWPF.HelpMethods
             string recordPhoneNumber = fieldElements[4].ToString();
             string recordAddress = fieldElements[5].ToString();
             string recordDescription = fieldElements[6].ToString();
-
-            //if (!String.IsNullOrEmpty(recordId))
-            //{
-            //    recordView.tbRecordId.Text = "";
-            //    return false;
-            //}
 
             if (String.IsNullOrEmpty(recordLastName))
             {
@@ -95,12 +85,6 @@ namespace PhoneBookWPF.HelpMethods
             var fieldElements = (object[])fields;
             string roleId = fieldElements[0].ToString();
             string roleName = fieldElements[1].ToString();
-
-            //if (!String.IsNullOrEmpty(roleId))
-            //{
-            //    roleView.tbRoleName.Text = "";
-            //    return false;
-            //}
 
             if (String.IsNullOrEmpty(roleName))
             {
