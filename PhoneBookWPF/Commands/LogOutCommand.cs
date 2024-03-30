@@ -1,13 +1,8 @@
 ﻿using System;
 using System.Windows;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using PhoneBookWPF.HelpMethods;
 using System.Net.Http;
-using System.Net.Http.Json;
 
 namespace PhoneBookWPF.Commands
 {
@@ -18,7 +13,6 @@ namespace PhoneBookWPF.Commands
         MyHttpClient MyHttp = new MyHttpClient();
         private string url = @"https://localhost:44379/api/";
         string urlRequest = "";
-        HttpResponseMessage response = new HttpResponseMessage();
 
         public bool CanExecute(object parameter)
         {

@@ -1,9 +1,5 @@
 ﻿using PhoneBookWPF.View;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace PhoneBookWPF.Commands
@@ -36,7 +32,6 @@ namespace PhoneBookWPF.Commands
                 App.RegistrationWindow.Activate();
                 App.RegistrationWindow.Focus();
             }
-
         }
     }
 }
