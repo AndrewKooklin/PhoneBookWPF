@@ -1,17 +1,10 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
-using Newtonsoft.Json;
 using PhoneBookWPF.Commands;
 using PhoneBookWPF.HelpMethods;
 using PhoneBookWPF.Model;
 using PhoneBookWPF.View;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Net.Http.Json;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -183,7 +176,6 @@ namespace PhoneBookWPF.ViewModel
             }
             set
             {
-                //_selectedRecord = new PhoneBookRecord();
                 _selectedRecord = value;
                 OnPropertyChanged(nameof(SelectedRecord));
             }

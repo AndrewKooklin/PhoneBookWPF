@@ -2,14 +2,10 @@
 using PhoneBookWPF.Commands;
 using PhoneBookWPF.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
 using System.Windows.Input;
 
@@ -22,22 +18,6 @@ namespace PhoneBookWPF.ViewModel
         string urlRequest = "";
         HttpResponseMessage response = new HttpResponseMessage();
         bool result;
-
-
-        //private string _errorInputUserNameContent = "";
-
-        //public string ErrorInputUserNameContent
-        //{
-        //    get
-        //    {
-        //        return _errorInputUserNameContent;
-        //    }
-        //    set
-        //    {
-        //        _errorInputUserNameContent = value;
-        //        OnPropertyChanged(nameof(ErrorInputUserNameContent));
-        //    }
-        //}
 
         private string _errorInputEMailContent = "";
 
@@ -139,25 +119,12 @@ namespace PhoneBookWPF.ViewModel
             }
             Grid gReg = (Grid)parameter;
             var gRegChildren = gReg.Children;
-            //TextBox tbuserName = (TextBox)gRegChildren[9];
-            //string userNameValue = tbuserName.Text;
             TextBox tbemail = (TextBox)gRegChildren[7];
             string emailValue = tbemail.Text;
             PasswordBox passwordBox = (PasswordBox)gRegChildren[8];
             string passwordValue = passwordBox.Password;
             PasswordBox confirmPassword = (PasswordBox)gRegChildren[9];
             string confirmPasswordValue = confirmPassword.Password;
-
-            //if (String.IsNullOrEmpty(userNameValue) || userNameValue.Length < 3)
-            //{
-            //    ErrorInputUserNameContent = "Имя не менее 3 символов";
-            //    ErrorRegistrationLabelContent = "";
-            //    return false;
-            //}
-            //else
-            //{
-            //    ErrorInputUserNameContent = "";
-            //}
 
             if (String.IsNullOrEmpty(emailValue))
             {
@@ -208,15 +175,12 @@ namespace PhoneBookWPF.ViewModel
             }
             Grid gReg = (Grid)parameter;
             var gRegChildren = gReg.Children;
-            //TextBox tbuserName = (TextBox)gRegChildren[9];
-            //string userNameValue = tbuserName.Text;
             TextBox tbemail = (TextBox)gRegChildren[7];
             string eMailValue = tbemail.Text;
             PasswordBox passwordBox = (PasswordBox)gRegChildren[8];
             string passwordValue = passwordBox.Password;
 
             RegisterModel model = new RegisterModel();
-            //model.UserName = userNameValue;
             model.Password = passwordValue;
             model.Email = eMailValue;
             _httpClient = new HttpClient();
