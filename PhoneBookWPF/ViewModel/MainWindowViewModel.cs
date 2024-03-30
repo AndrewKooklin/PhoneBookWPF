@@ -212,10 +212,17 @@ namespace PhoneBookWPF.ViewModel
                 bookWindow.miUserName.Header = $"Hello {model.Email}";
                 bookWindow.miLogOut.Visibility = Visibility.Visible;
 
+                App.ActionsWithRecordView.Visibility = Visibility.Visible;
                 App.ActionsWithRecordView.bAddRecord.Visibility = Visibility.Visible;
                 App.ActionsWithRecordView.bChangeRecord.Visibility = Visibility.Visible;
                 App.ActionsWithRecordView.bDeleteRecord.Visibility = Visibility.Visible;
                 App.ActionsWithRecordView.bClearForm.Visibility = Visibility.Visible;
+                App.ActionAddUserView.Visibility = Visibility.Visible;
+                App.ActionDeleteUserView.Visibility = Visibility.Visible;
+                App.ActionsRoleUserView.Visibility = Visibility.Visible;
+                App.ActionsWithRoleView.Visibility = Visibility.Visible;
+                App.UsersView.Visibility = Visibility.Visible;
+                App.RolesView.Visibility = Visibility.Visible;
             }
             else if (!userRoles.Contains("Admin") && userRoles.Contains("User"))
             {

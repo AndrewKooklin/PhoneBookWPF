@@ -33,10 +33,16 @@ namespace PhoneBookWPF.Commands
             bookWindow.miUserName.Visibility = Visibility.Collapsed;
             bookWindow.miLogOut.Visibility = Visibility.Collapsed;
 
-            App.ActionsWithRecordView.bAddRecord.Visibility = Visibility.Collapsed;
-            App.ActionsWithRecordView.bChangeRecord.Visibility = Visibility.Collapsed;
-            App.ActionsWithRecordView.bDeleteRecord.Visibility = Visibility.Collapsed;
-            App.ActionsWithRecordView.bClearForm.Visibility = Visibility.Collapsed;
+            App.ActionsWithRecordView.bAddRecord.Visibility = Visibility.Hidden;
+            App.ActionsWithRecordView.bChangeRecord.Visibility = Visibility.Hidden;
+            App.ActionsWithRecordView.bDeleteRecord.Visibility = Visibility.Hidden;
+            App.ActionsWithRecordView.bClearForm.Visibility = Visibility.Hidden;
+            App.ActionAddUserView.Visibility = Visibility.Hidden;
+            App.ActionDeleteUserView.Visibility = Visibility.Hidden;
+            App.ActionsRoleUserView.Visibility = Visibility.Hidden;
+            App.ActionsWithRoleView.Visibility = Visibility.Hidden;
+            App.UsersView.Visibility = Visibility.Hidden;
+            App.RolesView.Visibility = Visibility.Hidden;
 
             bookWindow.UpdateDefaultStyle();
 

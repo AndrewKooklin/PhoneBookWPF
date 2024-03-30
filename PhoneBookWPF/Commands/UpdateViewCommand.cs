@@ -31,6 +31,7 @@ namespace PhoneBookWPF.Commands
             {
                 case "Прочитать записи":
                     {
+                        App.RecordsView.Visibility = System.Windows.Visibility.Visible;
                         _pbWindowViewModel.LeftCurrentView = App.RecordsView;
                         break;
                     }
@@ -39,22 +40,28 @@ namespace PhoneBookWPF.Commands
                 case "Изменить запись":
                 case "Удалить запись":
                     {
+                        App.ActionsWithRecordView.Visibility = System.Windows.Visibility.Visible;
                         _pbWindowViewModel.RightCurrentView = App.ActionsWithRecordView;
                         break;
                     }
                 case "Список пользователей":
                     {
+                        App.UsersView.Visibility = System.Windows.Visibility.Visible;
                         _pbWindowViewModel.LeftCurrentView = App.UsersView;
                         break;
                     }
                 case "Добавить пользователя":
                     {
+                        App.UsersView.Visibility = System.Windows.Visibility.Visible;
+                        App.ActionAddUserView.Visibility = System.Windows.Visibility.Visible;
                         _pbWindowViewModel.LeftCurrentView = App.UsersView;
                         _pbWindowViewModel.RightCurrentView = App.ActionAddUserView;
                         break;
                     }
                 case "Удалить пользователя":
                     {
+                        App.UsersView.Visibility = System.Windows.Visibility.Visible;
+                        App.ActionDeleteUserView.Visibility = System.Windows.Visibility.Visible;
                         _pbWindowViewModel.LeftCurrentView = App.UsersView;
                         _pbWindowViewModel.RightCurrentView = App.ActionDeleteUserView;
                         break;
@@ -62,18 +69,23 @@ namespace PhoneBookWPF.Commands
                 case "Добавить роль пользователю":
                 case "Удалить роль у пользователя":
                     {
+                        App.UsersView.Visibility = System.Windows.Visibility.Visible;
+                        App.ActionsRoleUserView.Visibility = System.Windows.Visibility.Visible;
                         _pbWindowViewModel.LeftCurrentView = App.UsersView;
                         _pbWindowViewModel.RightCurrentView = App.ActionsRoleUserView;
                         break;
                     }
                 case "Список ролей":
                     {
+                        App.RolesView.Visibility = System.Windows.Visibility.Visible;
                         _pbWindowViewModel.LeftCurrentView = App.RolesView;
                         break;
                     }
                 case "Добавить роль":
                 case "Удалить роль":
                     {
+                        App.RolesView.Visibility = System.Windows.Visibility.Visible;
+                        App.ActionsWithRoleView.Visibility = System.Windows.Visibility.Visible;
                         _pbWindowViewModel.LeftCurrentView = App.RolesView;
                         _pbWindowViewModel.RightCurrentView = App.ActionsWithRoleView;
                         break;
