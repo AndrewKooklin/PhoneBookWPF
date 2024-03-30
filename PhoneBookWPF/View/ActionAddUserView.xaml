@@ -19,7 +19,6 @@
         <model:UserModel x:Key="UserModel"/>
         <help:MyMultiValueConverter x:Key="MyMultiValueConverter"/>
 
-
         <Style x:Key="ErrorUserTextBlock" TargetType="{x:Type TextBlock}">
             <Setter Property="Margin" Value="40 0 0 0"/>
             <Setter Property="Width" Value="200"/>
