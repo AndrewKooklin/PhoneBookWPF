@@ -21,20 +21,12 @@
         </Grid.Resources>
 
         <Grid.RowDefinitions>
-            <!--<RowDefinition Height="3*"/>-->
             <RowDefinition Height="6*"/>
             <RowDefinition Height="80*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-
-        <!--<Label x:Name="ErrorSelection"
-                   Content="{Binding ErrorSelection, Source={StaticResource PhoneBookWindowViewModel}}"
-                   FontSize="17"
-                   Foreground="Yellow"
-                   Margin="2"
-                   HorizontalAlignment="Left"/>-->
 
         <StackPanel x:Name="spRecordsHeaders"
                     Grid.Row="0"
@@ -63,7 +55,6 @@
                     Background="PaleGreen"/>
 
         </StackPanel>
-
 
         <StackPanel x:Name="spRecordsContent" 
                         Grid.Row="1" 

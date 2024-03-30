@@ -1,19 +1,12 @@
-﻿using Microsoft.AspNet.Identity.EntityFramework;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using PhoneBookWPF.Commands;
 using PhoneBookWPF.HelpMethods;
 using PhoneBookWPF.Model;
-using PhoneBookWPF.View;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Net.Http.Json;
 using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -26,8 +19,6 @@ namespace PhoneBookWPF.ViewModel
         private string url = @"https://localhost:44379/api/";
         string urlRequest = "";
         HttpResponseMessage response = new HttpResponseMessage();
-        bool userExist;
-        IdentityUser user;
         List<string> userRoles = new List<string>();
 
         private string eMail;
@@ -73,7 +64,6 @@ namespace PhoneBookWPF.ViewModel
         }
 
         private string _errorPasswordBoxLabel = "";
-
         public string ErrorPasswordBoxLabel
         {
             get
@@ -110,8 +100,6 @@ namespace PhoneBookWPF.ViewModel
         public ICommand LogInCommand { get; set; }
 
         public ICommand RedirectRegistrationCommand { get; set; }
-
-
 
         private bool CanExecute(object parameter)
         {

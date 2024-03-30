@@ -26,13 +26,6 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!--<Label x:Name="ErrorSelection"
-                   Content="{Binding ErrorSelection, Source={StaticResource PhoneBookWindowViewModel}}"
-                   FontSize="17"
-                   Foreground="Yellow"
-                   Margin="2"
-                   HorizontalAlignment="Left"/>-->
-
         <StackPanel x:Name="spRecordsHeaders"
                     Grid.Row="1"
                     Orientation="Horizontal"
@@ -52,7 +45,6 @@
                     Background="PaleGreen"/>
 
         </StackPanel>
-
 
         <StackPanel x:Name="spRolesContent" 
                         Grid.Row="2" 

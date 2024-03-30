@@ -19,7 +19,6 @@
     <Window.Resources>
         <viewModel:RegistrationWindowViewModel x:Key="RegistrationViewModel"/>
 
-
         <Style x:Key="RegistrationLabel" TargetType="{x:Type Label}">
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -87,8 +86,6 @@
                VerticalAlignment="Top" 
                Width="272"
                Height="50"/>
-
-
         <Label x:Name="lErrorEMail"
                Grid.Row="1"
                Grid.Column="1"
@@ -179,14 +176,6 @@
                 Width="118"
                 Command="{Binding RegisterCommand, Source={StaticResource RegistrationViewModel}}"
                 CommandParameter="{Binding ElementName=gRegistration, Mode=OneWay}"/>
-            <!--<Button.CommandParameter>
-                    <MultiBinding Converter="{StaticResource MyMultiValueConverter}">
-                        <Binding Path="" ElementName="tbUserName"/>
-                        <Binding ElementName="tbEMail"/>
-                        <Binding ElementName="tbPassword"/>
-                        <Binding ElementName="tbConfirmPassword"/>
-                    </MultiBinding>
-                </Button.CommandParameter>-->
 
         </StackPanel>
 
